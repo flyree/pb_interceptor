@@ -1,11 +1,13 @@
 #include "faultinjection.h"
 #include <string.h>
 #include <assert.h>
+
 #include "pin.H"
 #include "fi_cjmp_map.h"
 
 #include "utils.h"
 #include "instselector.h"
+#include "memtrack.h"
 
 //#define INCLUDEALLINST
 #define NOBRANCHES //always set
@@ -207,7 +209,7 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 {
 		if(fi_iterator == fi_inject_instance) {
 			if(size == 4) {
-				PRINT_MESSAGE(4, ("Executing %p, memory %p, value %d, in hex %p\n", 
+				PRINT_MESSAGE(4, ("Executing %p, memory %p, value %d, in hex %p\n",
 					ip, memp, * ((int*)memp), (VOID*)(*((int*)memp))));
 			}
 
@@ -463,6 +465,13 @@ VOID Fini(INT32 code, VOID *v)
 		fprintf(activationFile, "Not Activated!\n");
 		fclose(activationFile);
 	}
+
+	cout << "Memtrack: # addresses tracked: " << MemStore.size() << endl;
+	cout << "Memtrack: sanity check # inst" << NMemWriteInstStatic << endl;
+	for (map<VOID*,UINT64>::iterator it=MemStore.begin(); it!=MemStore.end(); ++it) {
+		cout << hex << it->first << "\t" << it->second << endl;
+	}
+
 }
 
 /* ===================================================================== */
@@ -475,7 +484,9 @@ INT32 Usage()
               + KNOB_BASE::StringKnobSummary() + "\n");
     return -1;
 }
-
+//VOID fake(INS ins, VOID *) {
+//	cout << "####Fake instrumentation.####" << endl;
+//}
 int main(int argc, char *argv[])
 {
 	PIN_InitSymbols();
@@ -489,8 +500,8 @@ int main(int argc, char *argv[])
 
 	get_instance_number(instcount_file.Value().c_str());
 
-	INS_AddInstrumentFunction(instruction_Instrumentation, 0);
-
+	//INS_AddInstrumentFunction(instruction_Instrumentation, 0);
+	INS_AddInstrumentFunction(memtrack,0);
 	PIN_AddFiniFunction(Fini, 0);
 
     // Never returns

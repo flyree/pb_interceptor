@@ -36,8 +36,7 @@ FILE *activationFile;
 	if(l > _logLevel) {printf x; fflush(stdout);}
 #else 
 
-#define PRINT_MESSAGE(l, x) 
-
+#define PRINT_MESSAGE(l, x)
 #endif // DEBUG
 
 using namespace std;
