@@ -500,8 +500,10 @@ int main(int argc, char *argv[])
 
 	get_instance_number(instcount_file.Value().c_str());
 
-	//INS_AddInstrumentFunction(instruction_Instrumentation, 0);
-	INS_AddInstrumentFunction(memtrack,0);
+	if (enable_fi.Value())
+		INS_AddInstrumentFunction(instruction_Instrumentation, 0);
+	if (track_store.Value())
+		INS_AddInstrumentFunction(memtrack,0);
 	PIN_AddFiniFunction(Fini, 0);
 
     // Never returns
