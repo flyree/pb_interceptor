@@ -16,6 +16,7 @@ KNOB<string> fi_activation_file (KNOB_MODE_WRITEONCE, "pintool",
     "fi_activation", "activate", "specify fault injection activation file");
 
 KNOB<BOOL> track_store(KNOB_MODE_WRITEONCE, "pintool", "memtrack", "0", "track all memory written?: default false." );
+KNOB<string> memtrackfile(KNOB_MODE_WRITEONCE, "pintool", "memtrackfile", "", "file name to write the memtrack records.");
 KNOB<BOOL> enable_fi(KNOB_MODE_WRITEONCE, "pintool", "enablefi", "0", "enable fault injection?: default no");
 //typedef uint64_t UINT64;
 //typedef uint32_t UINT32;

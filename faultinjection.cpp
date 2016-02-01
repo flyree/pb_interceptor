@@ -1,6 +1,7 @@
 #include "faultinjection.h"
 #include <string.h>
 #include <assert.h>
+#include <inttypes.h>
 
 #include "pin.H"
 #include "fi_cjmp_map.h"
@@ -8,7 +9,7 @@
 #include "utils.h"
 #include "instselector.h"
 #include "memtrack.h"
-
+#include <fstream>
 //#define INCLUDEALLINST
 #define NOBRANCHES //always set
 //#define NOSTACKFRAMEOP
@@ -239,7 +240,22 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 		fi_iterator ++;
 }
 
+VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg) {
+	if (fi_iterator == fi_inject_instance) {
+		UINT32 *valp = reg->dword;
+		srand((unsigned)time(0));
+		UINT32 inject_bit = rand() % 32;
+		UINT32 oldval = *valp;
+		*valp = *valp ^ (1U << inject_bit);
+		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "]\n",
+				oldval, inject_bit);
+		fclose(activationFile);
+		activated=1;
+		fi_iterator++;
+	}
+	fi_iterator++;
 
+}
 
 VOID instruction_Instrumentation(INS ins, VOID *v){
 	// decides where to insert the injection calls and what calls to inject
@@ -374,15 +390,23 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 						IARG_CONTEXT,
 						IARG_END);
 			return;
-		} else if (INS_IsMemoryWrite(ins)) {
+		} else if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
         LOG("COMP2MEM: inst " + INS_Disassemble(ins) + "\n");
 				
-        INS_InsertPredicatedCall(
-								ins, IPOINT_BEFORE, (AFUNPTR)FI_InjectFault_Mem,
-								IARG_ADDRINT, INS_Address(ins),
-								IARG_MEMORYREAD_EA,							
-								IARG_MEMORYREAD_SIZE,
-								IARG_END);
+//        INS_InsertPredicatedCall(
+//								ins, IPOINT_BEFORE, (AFUNPTR)FI_InjectFault_Mem,
+//								IARG_ADDRINT, INS_Address(ins),
+//								IARG_MEMORYREAD_EA,
+//								IARG_MEMORYREAD_SIZE,
+//								IARG_END);
+			REG base_reg = INS_MemoryBaseReg(ins);
+			if (REG_valid(base_reg))
+				INS_InsertPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
+									IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
+			else {
+				cout << "WTF why base_reg not valid?";
+				exit(8);
+			}
         return;
     
     } else {
@@ -466,11 +490,26 @@ VOID Fini(INT32 code, VOID *v)
 		fclose(activationFile);
 	}
 
-	cout << "Memtrack: # addresses tracked: " << MemStore.size() << endl;
-	cout << "Memtrack: sanity check # inst" << NMemWriteInstStatic << endl;
-	for (map<VOID*,UINT64>::iterator it=MemStore.begin(); it!=MemStore.end(); ++it) {
-		cout << hex << it->first << "\t" << it->second << endl;
+
+
+
+	if (memtrackfile.Value()=="") {
+
+		cout << "Memtrack: # addresses tracked: " << MemStore.size() << endl;
+		cout << "Memtrack: sanity check # inst" << NMemWriteInstStatic << endl;
+		for (map<VOID*,UINT64>::iterator it=MemStore.begin(); it!=MemStore.end(); ++it) {
+			cout << hex << it->first << "\t" << it->second << endl;
+		}
+	} else {
+		ofstream mf;
+		mf.open(memtrackfile.Value().c_str());
+		mf << "Memtrack: # addresses tracked: " << MemStore.size() << endl;
+		mf << "Memtrack: sanity check # inst" << NMemWriteInstStatic << endl;
+		for (map<VOID*,UINT64>::iterator it=MemStore.begin(); it!=MemStore.end(); ++it) {
+			mf << hex << it->first << "\t" << it->second << endl;
+		}
 	}
+
 
 }
 

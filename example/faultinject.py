@@ -11,15 +11,21 @@ import subprocess
 #basedir = "/home/jshwei/Desktop/splash_time_automated"
 #basedir = "."
 currdir = "."
-progbin = currdir + "/libquantum"
-pinbin = "pin"
-instcategorylib = "/ubc/ece/home/kp/grads/jwei/pin/source/tools/FaultInject/obj-intel64/instcategory.so"
-instcountlib = "/ubc/ece/home/kp/grads/jwei/pin/source/tools/FaultInject/obj-intel64/instcount.so"
-filib = "/ubc/ece/home/kp/grads/jwei/pin/source/tools/FaultInject/obj-intel64/faultinjection.so"
+#progbin = currdir + "/libquantum"
+progbin = "/home/pwu/proj/lulesh/LULESH"
+#pinbin = "pin"
+pinbin="/home/pwu/app/pin-2.11-49306-gcc.3.4.6-ia32_intel64-linux/pin"
+#instcategorylib = "/ubc/ece/home/kp/grads/jwei/pin/source/tools/FaultInject/obj-intel64/instcategory.so"
+#instcountlib = "/ubc/ece/home/kp/grads/jwei/pin/source/tools/FaultInject/obj-intel64/instcount.so"
+#filib = "/ubc/ece/home/kp/grads/jwei/pin/source/tools/FaultInject/obj-intel64/faultinjection.so"
+instcategorylib="/home/pwu/proj/pb_interceptor/obj-intel64/instcategory.so"
+instcountlib="/home/pwu/proj/pb_interceptor/obj-intel64/instcount.so"
+filib="/home/pwu/proj/pb_interceptor/obj-intel64/faultinjection.so"
 #inputfile = currdir + "/inputs/input.2048"
 outputdir = currdir + "/prog_output"
 basedir = currdir + "/baseline"
 errordir = currdir + "/error_output"
+#memdir = currdir + "/memtrack"
 
 if not os.path.isdir(outputdir):
   os.mkdir(outputdir)
@@ -27,10 +33,13 @@ if not os.path.isdir(basedir):
   os.mkdir(basedir)
 if not os.path.isdir(errordir):
   os.mkdir(errordir)
+#if not os.path.isdir(memdir):
+#    os.mkdir(memdir)
 
 timeout = 500
 
-optionlist = ["33", "5"]
+#optionlist = ["33", "5"]
+optionlist = ["5"]
 
 def execute( execlist):
 	#print "Begin"
@@ -64,7 +73,7 @@ def execute( execlist):
 
 def main():
   #clear previous output
-  global run_number, optionlist, outputfile
+  global run_number, optionlist, outputfile, errorfile
   outputfile = basedir + "/golden_output"
   execlist = [pinbin, '-t', instcategorylib, '--', progbin]
   execlist.extend(optionlist)
@@ -80,7 +89,7 @@ def main():
   for index in range(0, run_number):
     outputfile = outputdir + "/outputfile-" + str(index)
     errorfile = errordir + "/errorfile-" + str(index)
-    execlist = [pinbin, '-t', filib, '-fioption', 'AllInst', '--', progbin]
+    execlist = [pinbin, '-t', filib, '-enablefi', '-memtrack', '--', progbin]
     execlist.extend(optionlist)
     ret = execute(execlist)
     if ret == "timed-out":
