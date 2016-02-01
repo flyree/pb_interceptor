@@ -26,7 +26,7 @@ CJmpMap jmp_map;
 
 VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt)
 {
-	if(fi_iterator == fi_inject_instance) {
+	//if(fi_iterator == fi_inject_instance) {
 
     bool isvalid = false;
 
@@ -95,8 +95,8 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 
 		//fi_iterator ++;
 
-	} 
-	fi_iterator ++;
+	//}
+	//fi_iterator ++;
 }
 
 
@@ -138,7 +138,7 @@ VOID inject_SP_FP(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 
 VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 	//need to consider FP regs and context
-	if(fi_iterator == fi_inject_instance) {
+	//if(fi_iterator == fi_inject_instance) {
 		const REG reg =  reg_map.findInjectReg(reg_num);
 		int isvalid = 0;
 		if(REG_valid(reg)){
@@ -202,13 +202,13 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 		}
         else
 			fi_inject_instance++;
-	}
-	fi_iterator ++;
+	//}
+	//fi_iterator ++;
 }
 
 VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 {
-		if(fi_iterator == fi_inject_instance) {
+		//if(fi_iterator == fi_inject_instance) {
 			if(size == 4) {
 				PRINT_MESSAGE(4, ("Executing %p, memory %p, value %d, in hex %p\n",
 					ip, memp, * ((int*)memp), (VOID*)(*((int*)memp))));
@@ -235,13 +235,13 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 
 
 			fi_iterator ++; //This is because the inject_reg will mistakenly add 1 more time when injecting 
-		}
+		//}
 
-		fi_iterator ++;
+		//fi_iterator ++;
 }
 
 VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg) {
-	if (fi_iterator == fi_inject_instance) {
+	//if (fi_iterator == fi_inject_instance) {
 		UINT32 *valp = reg->dword;
 		srand((unsigned)time(0));
 		UINT32 inject_bit = rand() % 32;
@@ -252,11 +252,14 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg) {
 		fclose(activationFile);
 		activated=1;
 		fi_iterator++;
-	}
-	fi_iterator++;
+	//}
+	//fi_iterator++;
 
 }
-
+ADDRINT FI_InjectIf() {
+	fi_iterator++;
+	return (fi_iterator==fi_inject_instance);
+}
 VOID instruction_Instrumentation(INS ins, VOID *v){
 	// decides where to insert the injection calls and what calls to inject
   if (!isValidInst(ins))
@@ -383,7 +386,8 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
       //LOG("inject flag bit:" + REG_StringShort(reg) + "\n");
 			
       UINT32 jmpindex = jmp_map.findJmpIndex(OPCODE_StringShort(INS_Opcode(next_ins)));
-			INS_InsertPredicatedCall(ins, IPOINT_AFTER, (AFUNPTR)FI_InjectFault_FlagReg,
+			INS_InsertIfPredicatedCall(ins, IPOINT_AFTER, (AFUNPTR)FI_InjectIf, IARG_END);
+			INS_InsertThenPredicatedCall(ins, IPOINT_AFTER, (AFUNPTR)FI_InjectFault_FlagReg,
 						IARG_INST_PTR,
 						IARG_UINT32, index,
 						IARG_UINT32, jmpindex,
@@ -400,10 +404,11 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 //								IARG_MEMORYREAD_SIZE,
 //								IARG_END);
 			REG base_reg = INS_MemoryBaseReg(ins);
-			if (REG_valid(base_reg))
-				INS_InsertPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-									IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
-			else {
+			if (REG_valid(base_reg)) {
+				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectIf, IARG_END);
+				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
+											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
+			} else {
 				cout << "WTF why base_reg not valid?";
 				exit(8);
 			}
@@ -416,8 +421,8 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	}
 
 
-
-	    INS_InsertPredicatedCall(
+		INS_InsertIfPredicatedCall(ins, IPOINT_AFTER, (AFUNPTR)FI_InjectIf, IARG_END);
+	    INS_InsertThenPredicatedCall(
 					ins, IPOINT_AFTER, (AFUNPTR)inject_CCS,
 					IARG_ADDRINT, INS_Address(ins),
 					IARG_UINT32, index,	
