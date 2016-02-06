@@ -395,23 +395,23 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 						IARG_END);
 			return;
 		} else if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
-        LOG("COMP2MEM: inst " + INS_Disassemble(ins) + "\n");
+        	LOG("COMP2MEM: inst " + INS_Disassemble(ins) + "\n");
 				
-//        INS_InsertPredicatedCall(
-//								ins, IPOINT_BEFORE, (AFUNPTR)FI_InjectFault_Mem,
-//								IARG_ADDRINT, INS_Address(ins),
-//								IARG_MEMORYREAD_EA,
-//								IARG_MEMORYREAD_SIZE,
-//								IARG_END);
-			REG base_reg = INS_MemoryBaseReg(ins);
-			if (REG_valid(base_reg)) {
-				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectIf, IARG_END);
-				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
-			} else {
-				cout << "WTF why base_reg not valid?";
-				exit(8);
-			}
+        	INS_InsertPredicatedCall(
+								ins, IPOINT_BEFORE, (AFUNPTR)FI_InjectFault_Mem,
+								IARG_ADDRINT, INS_Address(ins),
+								IARG_MEMORYREAD_EA,
+								IARG_MEMORYREAD_SIZE,
+								IARG_END);
+//			REG base_reg = INS_MemoryBaseReg(ins);
+//			if (REG_valid(base_reg)) {
+//				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectIf, IARG_END);
+//				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
+//											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
+//			} else {
+//				cout << "WTF why base_reg not valid?";
+//				exit(8);
+//			}
         return;
     
     } else {
@@ -420,14 +420,35 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 
 	}
 
+	if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
+		LOG("COMP2MEM: inst " + INS_Disassemble(ins) + "\n");
 
-		INS_InsertIfPredicatedCall(ins, IPOINT_AFTER, (AFUNPTR)FI_InjectIf, IARG_END);
-	    INS_InsertThenPredicatedCall(
-					ins, IPOINT_AFTER, (AFUNPTR)inject_CCS,
-					IARG_ADDRINT, INS_Address(ins),
-					IARG_UINT32, index,	
-					IARG_CONTEXT,
-					IARG_END);		
+//        INS_InsertPredicatedCall(
+//								ins, IPOINT_BEFORE, (AFUNPTR)FI_InjectFault_Mem,
+//								IARG_ADDRINT, INS_Address(ins),
+//								IARG_MEMORYREAD_EA,
+//								IARG_MEMORYREAD_SIZE,
+//								IARG_END);
+		REG base_reg = INS_MemoryBaseReg(ins);
+		if (REG_valid(base_reg)) {
+			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectIf, IARG_END);
+			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
+										 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
+		} else {
+			cout << "WTF why base_reg not valid?";
+			exit(8);
+		}
+		return;
+
+	}
+		INS_InsertIfPredicatedCall(ins, IPOINT_AFTER, (AFUNPTR) FI_InjectIf, IARG_END);
+		INS_InsertThenPredicatedCall(
+				ins, IPOINT_AFTER, (AFUNPTR) inject_CCS,
+				IARG_ADDRINT, INS_Address(ins),
+				IARG_UINT32, index,
+				IARG_CONTEXT,
+				IARG_END);`
+
 #endif        
 
 }
