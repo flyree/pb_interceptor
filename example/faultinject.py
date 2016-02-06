@@ -12,7 +12,7 @@ import subprocess
 #basedir = "."
 currdir = "."
 #progbin = currdir + "/libquantum"
-progbin = "/home/pwu/proj/lulesh/LULESH"
+progbin = "/home/pwu/proj/lulesh/LULESH_OPT2"
 #pinbin = "pin"
 pinbin="/home/pwu/app/pin-2.11-49306-gcc.3.4.6-ia32_intel64-linux/pin"
 #instcategorylib = "/ubc/ece/home/kp/grads/jwei/pin/source/tools/FaultInject/obj-intel64/instcategory.so"
@@ -87,10 +87,13 @@ def main():
   execute(execlist)
   # fault injection
   for index in range(0, run_number):
+    print "run # ", index
     outputfile = outputdir + "/outputfile-" + str(index)
     errorfile = errordir + "/errorfile-" + str(index)
     execlist = [pinbin, '-t', filib, '-enablefi', '-memtrack', '--', progbin]
     execlist.extend(optionlist)
+    with open('activate','a+') as f:
+        f.write("Trial "+str(index)+" starts!\n")
     ret = execute(execlist)
     if ret == "timed-out":
       error_File = open(errorfile, 'w')
