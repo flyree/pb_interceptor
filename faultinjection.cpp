@@ -451,18 +451,21 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 //								IARG_MEMORYREAD_EA,
 //								IARG_MEMORYREAD_SIZE,
 //								IARG_END);
-		REG base_reg = INS_MemoryBaseReg(ins);
-		if (REG_valid(base_reg)) {
+		REG reg = INS_MemoryBaseReg(ins);
+		if (!REG_valid(reg)) {
+			reg = INS_MemoryIndexReg(ins);
+		}
+
+		if (REG_valid(reg)) {
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-										 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
-		} else {
-			cout << "WTF why base_reg not valid?";
-			exit(8);
+										 IARG_INST_PTR, IARG_REG_REFERENCE, reg, IARG_END);
+			return;
 		}
-		return;
 
 	}
+
+
 		INS_InsertIfPredicatedCall(ins, IPOINT_AFTER, (AFUNPTR) FI_InjectCSSIf, IARG_END);
 		INS_InsertThenPredicatedCall(
 				ins, IPOINT_AFTER, (AFUNPTR) inject_CCS,
