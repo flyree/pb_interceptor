@@ -174,7 +174,7 @@ int main(int argc, char * argv[])
   
     configInstSelector();
 
-    parseLibNames();
+    parseLibNames(libnames.Value());
 
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(CountInst, 0);

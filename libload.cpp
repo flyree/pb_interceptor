@@ -14,7 +14,7 @@ using namespace std;
 
 KNOB<string> libnames(KNOB_MODE_WRITEONCE, "pintool",
                                "libload", "libnames", "to be loaded lib files");
-KNOB<string> is_inlib(KNOB_MODE_WRITEONCE, "pintool",
+KNOB<BOOL> is_inlib(KNOB_MODE_WRITEONCE, "pintool",
                       "isinlib","", "if we need to only look at instructions in a lib");
 
 vector<string> libs;
