@@ -20,7 +20,8 @@ UINT64 fi_iterator = 0;
 UINT64 total_num_inst = 0;
 int activated = 0;
 
-
+KNOB<string> instcount_file(KNOB_MODE_WRITEONCE, "pintool",
+                            "o", "pin.instcount.txt", "specify instruction count file name");
 CJmpMap jmp_map;
 
 UINT32 InstCounters[4];
