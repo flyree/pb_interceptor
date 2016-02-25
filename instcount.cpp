@@ -20,8 +20,7 @@
 
 KNOB<string> instcount_file(KNOB_MODE_WRITEONCE, "pintool",
                             "o", "pin.instcount.txt", "specify instruction count file name");
-KNOB<string> is_inlib(KNOB_MODE_WRITEONCE, "pintool",
-                            "isinlib",  "if we need to only look at instructions in a lib");
+
 	
 static UINT64 fi_all = 0;
 static UINT64 fi_ccs = 0;
