@@ -34,7 +34,7 @@ VOID libLoad(RTN rtn,VOID *v)
     string line;
     while (getline(infile,line))
     {
-       string image = StripPath(IMG_Name(SEC_Img(RTN_Sec(rtn)))).c_str();
+       string image = StripPath(IMG_Name(SEC_Img(RTN_Sec(rtn)).c_str()));
        if (image.find(line) != string::npos)
        {
            RTN_Open(rtn);
