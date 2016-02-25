@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <fstream>
 #include "faultinjection.h"
+#include <string.h>
 
 using namespace std;
 
@@ -29,15 +30,15 @@ const char * StripPath(const char * path)
 
 VOID libLoad(RTN rtn,VOID *v)
 {
-    ifstream infile(libnames.Value());
+    ifstream infile(libnames.Value().c_str());
     string line;
     while (getline(infile,line))
     {
-       string image = StripPath(IMG_NAME(SEC_Img(Rtn_Sec(rtn)))).c_str();
+       string image = StripPath(IMG_Name(SEC_Img(RTN_Sec(rtn)))).c_str();
        if (image.find(line) != string::npos)
        {
            RTN_Open(rtn);
-           for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_NEXT(ins))
+           for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
            {
                instruction_Instrumentation(ins,v);
            }
