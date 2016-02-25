@@ -298,5 +298,8 @@ class RegMap{
 RegMap reg_map;
 
 // FI: set the X87 ST[0-7] or MM[0-7] context register
-
+VOID FI_SetSTContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num);
+VOID FI_SetXMMContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num);
+VOID FI_SetYMMContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num);
+VOID FI_PrintActivationInfo();
 #endif
