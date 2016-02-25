@@ -12,7 +12,7 @@
 
 extern std::vector<std::string> libs;
 extern KNOB<string> libnames;
-VOID parseLibNames(string libfilename)
+VOID parseLibNames(string libfilename);
 VOID libLoad(RTN rtn,VOID *v);
 
 #endif //PB_INTERCEPTOR_LIBLOAD_H
