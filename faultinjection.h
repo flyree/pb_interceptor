@@ -45,6 +45,10 @@ FILE *activationFile;
 
 using namespace std;
 
+// for others to use
+
+VOID instruction_Instrumentation(INS ins, VOID *v);
+
 class RegMap{
 
 	struct Reg_Info {

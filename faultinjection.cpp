@@ -25,6 +25,7 @@ CJmpMap jmp_map;
 
 UINT32 InstCounters[4];
 
+
 VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt)
 {
 	//if(fi_iterator == fi_inject_instance) {
@@ -286,7 +287,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	// decides where to insert the injection calls and what calls to inject
   if (!isValidInst(ins))
     return;
-	
+	LOG("I am in "+RTN_Name(INS_Rtn(ins))+"\n");
 	int numW = INS_MaxNumWRegs(ins), randW = 0;
 	UINT32 index = 0;
 	REG reg;
