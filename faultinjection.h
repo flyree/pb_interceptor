@@ -7,8 +7,8 @@
 #include <iostream>
 #include <time.h>
 
-KNOB<string> instcount_file(KNOB_MODE_WRITEONCE, "pintool",
-    "o", "pin.instcount.txt", "specify instruction count file name");
+//KNOB<string> instcount_file(KNOB_MODE_WRITEONCE, "pintool",
+//    "o", "pin.instcount.txt", "specify instruction count file name");
 
 KNOB<string> fioption(KNOB_MODE_WRITEONCE, "pintool", "fioption", "AllInst", "specify fault injection option: AllInst, SPInst, FPInst, CCSavedInst");
 
