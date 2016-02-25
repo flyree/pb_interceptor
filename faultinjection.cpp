@@ -20,6 +20,14 @@ UINT64 fi_iterator = 0;
 UINT64 total_num_inst = 0;
 int activated = 0;
 
+KNOB<string> fioption(KNOB_MODE_WRITEONCE, "pintool", "fioption", "AllInst", "specify fault injection option: AllInst, SPInst, FPInst, CCSavedInst");
+
+KNOB<string> fi_activation_file (KNOB_MODE_WRITEONCE, "pintool",
+                                 "fi_activation", "activate", "specify fault injection activation file");
+
+KNOB<BOOL> track_store(KNOB_MODE_WRITEONCE, "pintool", "memtrack", "0", "track all memory written?: default false." );
+KNOB<string> memtrackfile(KNOB_MODE_WRITEONCE, "pintool", "memtrackfile", "", "file name to write the memtrack records.");
+KNOB<BOOL> enable_fi(KNOB_MODE_WRITEONCE, "pintool", "enablefi", "0", "enable fault injection?: default no");
 
 CJmpMap jmp_map;
 
