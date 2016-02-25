@@ -3,18 +3,19 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/faultinjection.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/fi_cjmp_map.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/utils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/faultinjection.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/memtrack.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/instselector.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/instcount.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/utils.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/instselector.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/memtrack.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/instcategory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/libload.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/memtrack.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/instcount.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/memtrack.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/instselector.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libload.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/utils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/instcategory.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/fi_cjmp_map.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/faultinjection.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/instselector.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/utils.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

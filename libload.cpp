@@ -8,11 +8,29 @@
 #include <fstream>
 #include "faultinjection.h"
 #include <string.h>
+#include <vector>
 
 using namespace std;
 
 KNOB<string> libnames(KNOB_MODE_WRITEONCE, "pintool",
                                "libload", "libnames", "to be loaded lib files");
+
+vector<string> libs;
+
+VOID parseLibNames(string libfilename)
+{
+    string line;
+    ifstream libfile(libfilename);
+    if (!libfile)
+    {
+        cout << "Error opening lib files!" << endl;
+        return -1;
+    }
+    while (getline(libfile,line))
+    {
+        libs.push_back(line);
+    }
+}
 
 
 const char * StripPath(const char * path)
@@ -30,12 +48,10 @@ const char * StripPath(const char * path)
 
 VOID libLoad(RTN rtn,VOID *v)
 {
-    ifstream infile(libnames.Value().c_str());
-    string line;
-    while (getline(infile,line))
+    for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
        string image = StripPath(IMG_Name(SEC_Img(RTN_Sec(rtn))).c_str());
-       if (image.find(line) != string::npos)
+       if (image.find(*it) != string::npos)
        {
            RTN_Open(rtn);
            for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))

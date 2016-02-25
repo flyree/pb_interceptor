@@ -10,6 +10,7 @@
 #include "instselector.h"
 #include "memtrack.h"
 #include <fstream>
+#include "libload.h"
 //#define INCLUDEALLINST
 #define NOBRANCHES //always set
 //#define NOSTACKFRAMEOP
@@ -32,7 +33,6 @@ KNOB<BOOL> enable_fi(KNOB_MODE_WRITEONCE, "pintool", "enablefi", "0", "enable fa
 CJmpMap jmp_map;
 FILE *activationFile;
 RegMap reg_map;
-
 UINT32 InstCounters[4];
 
 
@@ -602,9 +602,16 @@ int main(int argc, char *argv[])
 
 
 	get_instance_number(instcount_file.Value().c_str());
+    if (is_inlib.Value())
+    {
+        parseLibNames();
+        RTN_AddInstrumentFunction(libLoad, 0);
+    }
+    else{
+        if (enable_fi.Value())
+            INS_AddInstrumentFunction(instruction_Instrumentation, 0);
+    }
 
-	if (enable_fi.Value())
-		INS_AddInstrumentFunction(instruction_Instrumentation, 0);
 	if (track_store.Value())
 		INS_AddInstrumentFunction(memtrack,0);
 	PIN_AddFiniFunction(Fini, 0);

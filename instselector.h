@@ -9,4 +9,6 @@ bool isInstFITarget(INS ins);
 
 extern KNOB<string> instcount_file;
 
+extern KNOB<string> is_inlib;
+
 #endif

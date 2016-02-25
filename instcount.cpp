@@ -8,6 +8,7 @@
 #include "pin.H"
 #include "utils.h"
 #include "instselector.h"
+#include "libload.h"
 
 //#include "faultinjection.h"
 //#include "commonvars.h"
@@ -19,6 +20,8 @@
 
 KNOB<string> instcount_file(KNOB_MODE_WRITEONCE, "pintool",
                             "o", "pin.instcount.txt", "specify instruction count file name");
+KNOB<string> is_inlib(KNOB_MODE_WRITEONCE, "pintool",
+                            "isinlib",  "if we need to only look at instructions in a lib");
 	
 static UINT64 fi_all = 0;
 static UINT64 fi_ccs = 0;
@@ -31,11 +34,27 @@ VOID countSPInst() {fi_sp++;}
 VOID countBPInst() { fi_bp++;}
 
 
+
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
 {
   if (!isValidInst(ins))
     return;
+    int flag = 0;
+
+    if(is_inlib.Value())
+    {
+        std::string image = StripPath(IMG_Name(SEC_Img(RTN_Sec(RTN_Name(INS_Rtn(ins))))).c_str());
+        for (std::vector<std::string>::iterator it = libs.begin(); it != libs.end(); ++it) {
+            if (image.find(*it) != std::string.npos) {
+                flag = 1;
+            }
+        }
+        if (flag == 0) {
+            return;
+        }
+    }
+
 
 #ifdef INCLUDEALLINST
  	int numW = INS_MaxNumWRegs(ins), mayChangeControlFlow = 0;
@@ -156,7 +175,7 @@ int main(int argc, char * argv[])
   
     configInstSelector();
 
-
+    parseLibNames();
 
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(CountInst, 0);
