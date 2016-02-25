@@ -21,7 +21,7 @@
 //typedef uint64_t UINT64;
 //typedef uint32_t UINT32;
 
-FILE *activationFile;
+
 #define ALL_INST "AllInst"
 #define CCS_INST "CCSavedInst"
 #define FP_INST "FPInst" //EBP reg
@@ -295,7 +295,7 @@ class RegMap{
 
 };
 
-RegMap reg_map;
+
 
 // FI: set the X87 ST[0-7] or MM[0-7] context register
 extern VOID FI_SetSTContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num);

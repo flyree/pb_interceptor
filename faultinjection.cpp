@@ -30,6 +30,8 @@ KNOB<string> memtrackfile(KNOB_MODE_WRITEONCE, "pintool", "memtrackfile", "", "f
 KNOB<BOOL> enable_fi(KNOB_MODE_WRITEONCE, "pintool", "enablefi", "0", "enable fault injection?: default no");
 
 CJmpMap jmp_map;
+FILE *activationFile;
+RegMap reg_map;
 
 UINT32 InstCounters[4];
 
