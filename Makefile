@@ -71,12 +71,14 @@ $(OBJDIR)utils.o: utils.cpp
 
 $(OBJDIR)memtrack.o: memtrack.cpp
 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) $(OUTOPT) $@ $<
+$(OBJDIR)libload.o: libload.cpp
+	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) $(OUTOPT) $@ $<
 # $(UTIL_OBJ) : fi_util.cpp fi_util.h
 # 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT} $@ $<
 	
 
 $(TOOLS): $(PIN_LIBNAMES)
-$(TOOLS): %$(PINTOOL_SUFFIX) : %.o $(OBJDIR)instselector.o $(OBJDIR)utils.o $(OBJDIR)memtrack.o
+$(TOOLS): %$(PINTOOL_SUFFIX) : %.o $(OBJDIR)instselector.o $(OBJDIR)utils.o $(OBJDIR)memtrack.o $(OBJDIR)libload.o
 	$(PIN_LD) $(PIN_LDFLAGS) ${LINK_OUT}$@ $^ $(PIN_LIBS) $(DBG)
 
 ## cleaning
