@@ -63,6 +63,7 @@ VOID CountInst(INS ins, VOID *v)
     }
 
     LOG("I am in "+RTN_Name(INS_Rtn(ins))+"\n");
+    LOG("I am in "+IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins))))+"\n");
 #ifdef INCLUDEALLINST
  	int numW = INS_MaxNumWRegs(ins), mayChangeControlFlow = 0;
    if(!INS_HasFallThrough(ins))
