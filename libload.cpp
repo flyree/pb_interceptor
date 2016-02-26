@@ -19,7 +19,7 @@ KNOB<BOOL> is_inlib(KNOB_MODE_WRITEONCE, "pintool",
 
 vector<string> libs;
 
-UINT parseLibNames(string libfilename)
+UINT32 parseLibNames(string libfilename)
 {
     string line;
     ifstream libfile(libfilename.c_str());
