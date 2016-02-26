@@ -15,5 +15,6 @@ extern KNOB<string> libnames;
 extern KNOB<BOOL> is_inlib;
 VOID parseLibNames(string libfilename);
 VOID libLoad(RTN rtn,VOID *v);
+const char * stripPath(const char * path);
 
 #endif //PB_INTERCEPTOR_LIBLOAD_H
