@@ -604,7 +604,7 @@ int main(int argc, char *argv[])
 	get_instance_number(instcount_file.Value().c_str());
     if (is_inlib.Value())
     {
-        parseLibNames();
+        parseLibNames(libnames.Value());
         RTN_AddInstrumentFunction(libLoad, 0);
     }
     else{

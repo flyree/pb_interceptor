@@ -35,7 +35,7 @@ VOID parseLibNames(string libfilename)
 }
 
 
-const char * StripPath(const char * path)
+const char * stripPath(const char * path)
 {
     const char * file = strrchr(path,'/');
     if (file)
@@ -52,7 +52,7 @@ VOID libLoad(RTN rtn,VOID *v)
 {
     for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
-       string image = StripPath(IMG_Name(SEC_Img(RTN_Sec(rtn))).c_str());
+       string image = stripPath(IMG_Name(SEC_Img(RTN_Sec(rtn))).c_str());
        if (image.find(*it) != string::npos)
        {
            RTN_Open(rtn);

@@ -43,7 +43,7 @@ VOID CountInst(INS ins, VOID *v)
 
     if(is_inlib.Value())
     {
-        std::string image = StripPath(IMG_Name(SEC_Img(RTN_Sec(RTN_Name(INS_Rtn(ins))))).c_str());
+        std::string image = stripPath(IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins)))).c_str());
         for (std::vector<std::string>::iterator it = libs.begin(); it != libs.end(); ++it) {
             if (image.find(*it) != std::string.npos) {
                 flag = 1;
