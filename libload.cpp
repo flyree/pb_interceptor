@@ -19,10 +19,10 @@ KNOB<BOOL> is_inlib(KNOB_MODE_WRITEONCE, "pintool",
 
 vector<string> libs;
 
-VOID parseLibNames(string libfilename)
+UINT parseLibNames(string libfilename)
 {
     string line;
-    ifstream libfile(libfilename);
+    ifstream libfile(libfilename.c_str());
     if (!libfile)
     {
         cout << "Error opening lib files!" << endl;
