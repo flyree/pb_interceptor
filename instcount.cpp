@@ -45,6 +45,10 @@ VOID CountInst(INS ins, VOID *v)
 
     if(is_inlib.Value())
     {
+        if (!RTN_Valid(INS_Rtn(ins))) { // some library instructions do not have rtn !?
+            LOG("Invalid RTN " + INS_Disassemble(ins) + "\n");
+            return;
+        }
         std::string image = IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins))));
         std::cout << image.c_str() << std::endl;
         for (std::vector<std::string>::iterator it = libs.begin(); it != libs.end(); ++it) {

@@ -790,6 +790,10 @@ VOID libLoad(RTN rtn,VOID *v)
 {
     for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
+        if (!RTN_Valid(INS_Rtn(ins))) { // some library instructions do not have rtn !?
+            LOG("Invalid RTN " + INS_Disassemble(ins) + "\n");
+            return ;
+        }
         string image = stripPath(IMG_Name(SEC_Img(RTN_Sec(rtn))).c_str());
         if (image.find(*it) != string::npos)
         {
