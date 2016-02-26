@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="755aca87-7e0a-42a8-9659-9d473c12c884" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faultinjection.h" afterPath="$PROJECT_DIR$/faultinjection.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/instcount.cpp" afterPath="$PROJECT_DIR$/instcount.cpp" />
     </list>
     <ignored path="pb_interceptor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="instcount.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="instcount.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/instcount.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.56836903">
+              <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -113,10 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faultinjection.h" pinned="false" current-in-tab="true">
+      <file leaf-file-name="faultinjection.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultinjection.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.7191105">
+            <state vertical-scroll-proportion="0.0">
               <caret line="304" column="37" selection-start-line="304" selection-start-column="37" selection-end-line="304" selection-end-column="37" />
               <folding />
             </state>
@@ -145,8 +145,8 @@
         <option value="$PROJECT_DIR$/libload.cpp" />
         <option value="$PROJECT_DIR$/libload.h" />
         <option value="$PROJECT_DIR$/faultinjection.cpp" />
-        <option value="$PROJECT_DIR$/instcount.cpp" />
         <option value="$PROJECT_DIR$/faultinjection.h" />
+        <option value="$PROJECT_DIR$/instcount.cpp" />
       </list>
     </option>
   </component>
@@ -367,14 +367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/instcount.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libload.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -393,8 +385,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.7191105">
+        <state vertical-scroll-proportion="0.0">
           <caret line="304" column="37" selection-start-line="304" selection-start-column="37" selection-end-line="304" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instcount.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56836903">
+          <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
           <folding />
         </state>
       </provider>
