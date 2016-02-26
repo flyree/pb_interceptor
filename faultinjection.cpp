@@ -297,7 +297,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	// decides where to insert the injection calls and what calls to inject
   if (!isValidInst(ins))
     return;
-	LOG("I am in "+RTN_Name(INS_Rtn(ins))+"\n");
+
 	int numW = INS_MaxNumWRegs(ins), randW = 0;
 	UINT32 index = 0;
 	REG reg;
@@ -781,4 +781,23 @@ bool is_frameptrReg(REG reg){
     if(reg == REG_RBP || reg == REG_EBP || reg == REG_BP)
         return true;
     return false;
+}
+
+
+
+VOID libLoad(RTN rtn,VOID *v)
+{
+    for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
+    {
+        string image = stripPath(IMG_Name(SEC_Img(RTN_Sec(rtn))).c_str());
+        if (image.find(*it) != string::npos)
+        {
+            RTN_Open(rtn);
+            for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
+            {
+                instruction_Instrumentation(ins,v);
+            }
+            RTN_Close(rtn);
+        }
+    }
 }
