@@ -302,4 +302,5 @@ extern VOID FI_SetSTContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num);
 extern VOID FI_SetXMMContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num);
 extern VOID FI_SetYMMContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num);
 extern VOID FI_PrintActivationInfo();
+extern VOID libLoad(RTN rtn,VOID *v);
 #endif
