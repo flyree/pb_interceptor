@@ -37,8 +37,10 @@ VOID countBPInst() { fi_bp++;}
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
 {
-  if (!isValidInst(ins))
-    return;
+    if(!is_inlib.Value()) {
+      if (!isValidInst(ins))
+          return;
+    }
     int flag = 0;
 
     if(is_inlib.Value())

@@ -295,9 +295,10 @@ ADDRINT FI_InjectCSSIf() {
 }
 VOID instruction_Instrumentation(INS ins, VOID *v){
 	// decides where to insert the injection calls and what calls to inject
-  if (!isValidInst(ins))
-    return;
-
+    if(!is_inlib.Value()) {
+        if (!isValidInst(ins))
+            return;
+    }
 	int numW = INS_MaxNumWRegs(ins), randW = 0;
 	UINT32 index = 0;
 	REG reg;
