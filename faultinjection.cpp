@@ -23,6 +23,8 @@ int activated = 0;
 
 KNOB<string> fioption(KNOB_MODE_WRITEONCE, "pintool", "fioption", "AllInst", "specify fault injection option: AllInst, SPInst, FPInst, CCSavedInst");
 
+//KNOB<string> instcount_file;
+
 KNOB<string> fi_activation_file (KNOB_MODE_WRITEONCE, "pintool",
                                  "fi_activation", "activate", "specify fault injection activation file");
 
