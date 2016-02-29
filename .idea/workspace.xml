@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="755aca87-7e0a-42a8-9659-9d473c12c884" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faultinjection.cpp" afterPath="$PROJECT_DIR$/faultinjection.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faultinjection.h" afterPath="$PROJECT_DIR$/faultinjection.h" />
     </list>
     <ignored path="pb_interceptor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="instcount.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="instcount.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/instcount.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25947282">
-              <caret line="21" column="93" selection-start-line="21" selection-start-column="93" selection-end-line="21" selection-end-column="93" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="124" column="17" selection-start-line="124" selection-start-column="6" selection-end-line="124" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -99,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/instselector.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -119,17 +117,17 @@
         <entry file="file://$PROJECT_DIR$/faultinjection.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+              <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.32327586">
+              <caret line="159" column="31" selection-start-line="159" selection-start-column="31" selection-end-line="159" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -147,8 +145,8 @@
         <option value="$PROJECT_DIR$/libload.cpp" />
         <option value="$PROJECT_DIR$/libload.h" />
         <option value="$PROJECT_DIR$/instcount.cpp" />
-        <option value="$PROJECT_DIR$/faultinjection.cpp" />
         <option value="$PROJECT_DIR$/faultinjection.h" />
+        <option value="$PROJECT_DIR$/faultinjection.cpp" />
       </list>
     </option>
   </component>
@@ -452,18 +450,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/instselector.cpp">
+    <entry file="file://$PROJECT_DIR$/instcount.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="124" column="17" selection-start-line="124" selection-start-column="6" selection-end-line="124" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
+    <entry file="file://$PROJECT_DIR$/instselector.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -471,15 +469,15 @@
     <entry file="file://$PROJECT_DIR$/faultinjection.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/instcount.cpp">
+    <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25947282">
-          <caret line="21" column="93" selection-start-line="21" selection-start-column="93" selection-end-line="21" selection-end-column="93" />
+        <state vertical-scroll-proportion="0.32327586">
+          <caret line="159" column="31" selection-start-line="159" selection-start-column="31" selection-end-line="159" selection-end-column="31" />
           <folding />
         </state>
       </provider>
