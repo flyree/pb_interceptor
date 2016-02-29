@@ -43,7 +43,8 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 	//if(fi_iterator == fi_inject_instance) {
 
     bool isvalid = false;
-
+	fprintf(activationFile, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
+			(unsigned long)ip);
     const REG reg =  reg_map.findInjectReg(reg_num);
 		if(REG_valid(reg)){
 
