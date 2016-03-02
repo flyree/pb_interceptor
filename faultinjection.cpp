@@ -309,6 +309,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
         if (!isValidInst(ins))
             return;
     }
+	cout << "inside instrument" << endl;
 	int numW = INS_MaxNumWRegs(ins), randW = 0;
 	UINT32 index = 0;
 	REG reg;
@@ -799,7 +800,6 @@ bool is_frameptrReg(REG reg){
 
 VOID libLoad(RTN rtn,VOID *v)
 {
-	cout << "fuck!!!!!!" << endl;
 	for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
         string  image = IMG_Name(SEC_Img(RTN_Sec(rtn)));
@@ -808,7 +808,6 @@ VOID libLoad(RTN rtn,VOID *v)
             RTN_Open(rtn);
             for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
             {
-				cout << "fuck!" << endl;
                 instruction_Instrumentation(ins,v);
             }
             RTN_Close(rtn);
