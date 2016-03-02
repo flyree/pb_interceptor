@@ -802,7 +802,7 @@ VOID libLoad(RTN rtn,VOID *v)
 	cout << "fuck!!!!!!" << endl;
 	for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
-        string - = IMG_Name(SEC_Img(RTN_Sec(rtn)));
+        string  = IMG_Name(SEC_Img(RTN_Sec(rtn)));
         if (image.find(*it) != string::npos)
         {
             RTN_Open(rtn);
