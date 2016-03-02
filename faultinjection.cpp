@@ -49,7 +49,7 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
     bool isvalid = false;
 
     const REG reg =  reg_map.findInjectReg(reg_num);
-	fprintf(activationFile, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
+	fprintf(stdout, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
 			(unsigned long)ip);
 		if(REG_valid(reg)){
 
@@ -162,7 +162,7 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 	//if(fi_iterator == fi_inject_instance) {
 		const REG reg =  reg_map.findInjectReg(reg_num);
 		int isvalid = 0;
-	fprintf(activationFile, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
+	fprintf(stdout, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
 			(unsigned long)ip);
 		if(REG_valid(reg)){
 			isvalid = 1;
@@ -309,7 +309,6 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
         if (!isValidInst(ins))
             return;
     }
-	cout << "inside instrument" << endl;
 	int numW = INS_MaxNumWRegs(ins), randW = 0;
 	UINT32 index = 0;
 	REG reg;
