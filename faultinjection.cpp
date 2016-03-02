@@ -615,7 +615,8 @@ int main(int argc, char *argv[])
 	get_instance_number(instcount_file.Value().c_str());
     if (is_inlib.Value())
     {
-        parseLibNames(libnames.Value());
+        cout << "True or false" << endl;
+		parseLibNames(libnames.Value());
         RTN_AddInstrumentFunction(libLoad, 0);
     }
     else{
@@ -798,7 +799,8 @@ bool is_frameptrReg(REG reg){
 
 VOID libLoad(RTN rtn,VOID *v)
 {
-    for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
+	cout << "fuck!!!!!!" << endl;
+	for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
         string - = IMG_Name(SEC_Img(RTN_Sec(rtn)));
         if (image.find(*it) != string::npos)
