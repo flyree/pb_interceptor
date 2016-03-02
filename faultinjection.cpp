@@ -32,6 +32,10 @@ KNOB<BOOL> track_store(KNOB_MODE_WRITEONCE, "pintool", "memtrack", "0", "track a
 KNOB<string> memtrackfile(KNOB_MODE_WRITEONCE, "pintool", "memtrackfile", "", "file name to write the memtrack records.");
 KNOB<BOOL> enable_fi(KNOB_MODE_WRITEONCE, "pintool", "enablefi", "0", "enable fault injection?: default no");
 
+
+KNOB<string> instcount_file(KNOB_MODE_WRITEONCE, "pintool",
+							"o", "pin.instcount.txt", "specify instruction count file name");
+
 CJmpMap jmp_map;
 FILE *activationFile;
 RegMap reg_map;
