@@ -796,7 +796,7 @@ VOID libLoad(RTN rtn,VOID *v)
 {
     for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
-        string image = stripPath(IMG_Name(SEC_Img(RTN_Sec(rtn))).c_str());
+        string image = IMG_Name(SEC_Img(RTN_Sec(rtn)));
         if (image.find(*it) != string::npos)
         {
             RTN_Open(rtn);
