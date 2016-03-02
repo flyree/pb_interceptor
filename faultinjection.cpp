@@ -391,7 +391,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
   if(!isInstFITarget(ins))
     return;
 
-
+cout << "Arrive here" << endl;
 
 
       if(numW > 1)
