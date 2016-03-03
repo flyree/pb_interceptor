@@ -162,8 +162,8 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 	//if(fi_iterator == fi_inject_instance) {
 		const REG reg =  reg_map.findInjectReg(reg_num);
 		int isvalid = 0;
-	fprintf(stdout, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
-			(unsigned long)ip);
+	//fprintf(stdout, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
+//			(unsigned long)ip);
 		if(REG_valid(reg)){
 			isvalid = 1;
 //PRINT_MESSAGE(4, ("Executing: Valid Reg name %s\n", REG_StringShort(reg).c_str()));
@@ -391,7 +391,6 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
   if(!isInstFITarget(ins))
     return;
 
-cout << "Arrive here" << endl;
 
 
       if(numW > 1)
