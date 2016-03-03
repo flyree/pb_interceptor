@@ -49,8 +49,8 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
     bool isvalid = false;
 
     const REG reg =  reg_map.findInjectReg(reg_num);
-	fprintf(stdout, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
-			(unsigned long)ip);
+	//fprintf(stdout, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
+	//		(unsigned long)ip);
 		if(REG_valid(reg)){
 
       isvalid = true;
@@ -99,8 +99,8 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 			//fi_iterator ++;
 		}
 		if(isvalid){
-			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip);
+			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
+					(unsigned long)ip, RTN_Name(INS_Rtn(ins)).c_str());
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -162,8 +162,6 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 	//if(fi_iterator == fi_inject_instance) {
 		const REG reg =  reg_map.findInjectReg(reg_num);
 		int isvalid = 0;
-	//fprintf(stdout, "Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
-//			(unsigned long)ip);
 		if(REG_valid(reg)){
 			isvalid = 1;
 //PRINT_MESSAGE(4, ("Executing: Valid Reg name %s\n", REG_StringShort(reg).c_str()));
@@ -215,8 +213,8 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
                         //FI_PrintActivationInfo();	
 		}
 		if(isvalid){
-			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip);
+			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
+					(unsigned long)ip,RTN_Name(INS_Rtn(ins)).c_str());
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -271,8 +269,8 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg) {
 		UINT32 inject_bit = rand() % 32;
 		UINT32 oldval = *valp;
 		*valp = *valp ^ (1U << inject_bit);
-		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx\n",
-				oldval, inject_bit, (unsigned long)ip);
+		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
+				oldval, inject_bit, (unsigned long)ip, RTN_Name(INS_Rtn(ins)).c_str());
 		fclose(activationFile);
 		activated=1;
 		fi_iterator++;
