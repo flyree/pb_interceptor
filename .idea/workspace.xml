@@ -127,10 +127,13 @@
       <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18533772">
-              <caret line="538" column="24" selection-start-line="538" selection-start-column="24" selection-end-line="538" selection-end-column="24" />
+            <state vertical-scroll-proportion="-0.126369">
+              <caret line="216" column="62" selection-start-line="216" selection-start-column="62" selection-end-line="216" selection-end-column="62" />
               <folding>
-                <element signature="e#9547#10971#0" expanded="true" />
+                <element signature="e#9468#10892#0" expanded="true" />
+                <element signature="e#11214#11392#0" expanded="true" />
+                <element signature="e#11417#11581#0" expanded="true" />
+                <element signature="e#11825#11933#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -447,7 +450,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#9547#10971#0" expanded="true" />
+            <element signature="e#9468#10892#0" expanded="true" />
+            <element signature="e#11214#11392#0" expanded="true" />
+            <element signature="e#11417#11581#0" expanded="true" />
+            <element signature="e#11825#11933#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -555,10 +561,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18533772">
-          <caret line="538" column="24" selection-start-line="538" selection-start-column="24" selection-end-line="538" selection-end-column="24" />
+        <state vertical-scroll-proportion="-0.126369">
+          <caret line="216" column="62" selection-start-line="216" selection-start-column="62" selection-end-line="216" selection-end-column="62" />
           <folding>
-            <element signature="e#9547#10971#0" expanded="true" />
+            <element signature="e#9468#10892#0" expanded="true" />
+            <element signature="e#11214#11392#0" expanded="true" />
+            <element signature="e#11417#11581#0" expanded="true" />
+            <element signature="e#11825#11933#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -157,7 +157,7 @@ VOID inject_SP_FP(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 */
 
 
-VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
+VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *ins){
 	//need to consider FP regs and context
 	//if(fi_iterator == fi_inject_instance) {
 		const REG reg =  reg_map.findInjectReg(reg_num);
@@ -214,7 +214,7 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 		}
 		if(isvalid){
 			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip,RTN_Name(INS_Rtn(ins)).c_str());
+					(unsigned long)ip,RTN_Name(INS_Rtn(*((INS*)ins))).c_str());
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -491,6 +491,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 				IARG_ADDRINT, INS_Address(ins),
 				IARG_UINT32, index,
 				IARG_CONTEXT,
+				(IARG_PTR)(&ins),
 				IARG_END);
 
 #endif        
