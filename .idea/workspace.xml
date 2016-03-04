@@ -126,8 +126,8 @@
       <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6065712">
-              <caret line="466" column="35" selection-start-line="466" selection-start-column="35" selection-end-line="466" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.5181129">
+              <caret line="467" column="80" selection-start-line="467" selection-start-column="80" selection-end-line="467" selection-end-column="80" />
               <folding>
                 <element signature="e#9468#10892#0" expanded="true" />
                 <element signature="e#11214#11392#0" expanded="true" />
@@ -560,8 +560,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6065712">
-          <caret line="466" column="35" selection-start-line="466" selection-start-column="35" selection-end-line="466" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.5181129">
+          <caret line="467" column="80" selection-start-line="467" selection-start-column="80" selection-end-line="467" selection-end-column="80" />
           <folding>
             <element signature="e#9468#10892#0" expanded="true" />
             <element signature="e#11214#11392#0" expanded="true" />
