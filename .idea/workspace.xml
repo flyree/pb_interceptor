@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="755aca87-7e0a-42a8-9659-9d473c12c884" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faultinjection.cpp" afterPath="$PROJECT_DIR$/faultinjection.cpp" />
     </list>
     <ignored path="pb_interceptor.iws" />
@@ -127,8 +126,8 @@
       <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.126369">
-              <caret line="216" column="62" selection-start-line="216" selection-start-column="62" selection-end-line="216" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.6065712">
+              <caret line="466" column="35" selection-start-line="466" selection-start-column="35" selection-end-line="466" selection-end-column="35" />
               <folding>
                 <element signature="e#9468#10892#0" expanded="true" />
                 <element signature="e#11214#11392#0" expanded="true" />
@@ -561,8 +560,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.126369">
-          <caret line="216" column="62" selection-start-line="216" selection-start-column="62" selection-end-line="216" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.6065712">
+          <caret line="466" column="35" selection-start-line="466" selection-start-column="35" selection-end-line="466" selection-end-column="35" />
           <folding>
             <element signature="e#9468#10892#0" expanded="true" />
             <element signature="e#11214#11392#0" expanded="true" />

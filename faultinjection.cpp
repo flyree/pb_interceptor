@@ -448,7 +448,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 			if (REG_valid(base_reg)) {
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
+											 +, IARG_REG_REFERENCE, base_reg, IARG_END);
 			} else {
 				cout << "WTF why base_reg not valid?";
 				exit(8);
@@ -491,7 +491,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 				IARG_ADDRINT, INS_Address(ins),
 				IARG_UINT32, index,
 				IARG_CONTEXT,
-				(IARG_PTR)(&ins),
+				IARG_PTR,(&ins),
 				IARG_END);
 
 #endif        
