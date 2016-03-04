@@ -479,7 +479,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 		if (REG_valid(reg)) {
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-										 IARG_INST_PTR, IARG_REG_REFERENCE, reg, IARG_END);
+										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_PTR, routine_name, IARG_END);
 			return;
 		}
 
