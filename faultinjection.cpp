@@ -42,7 +42,7 @@ RegMap reg_map;
 UINT32 InstCounters[4];
 
 
-VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt)
+VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt, VOID * ins)
 {
 	//if(fi_iterator == fi_inject_instance) {
 
@@ -100,7 +100,7 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 		}
 		if(isvalid){
 			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip, RTN_Name(INS_Rtn(ins)).c_str());
+					(unsigned long)ip, RTN_Name(INS_Rtn(*((INS *)ins))).c_str());
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -262,7 +262,7 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 		//fi_iterator ++;
 }
 
-VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg) {
+VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *ins) {
 	//if (fi_iterator == fi_inject_instance) {
 		UINT32 *valp = reg->dword;
 		srand((unsigned)time(0));
@@ -270,7 +270,7 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg) {
 		UINT32 oldval = *valp;
 		*valp = *valp ^ (1U << inject_bit);
 		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
-				oldval, inject_bit, (unsigned long)ip, RTN_Name(INS_Rtn(ins)).c_str());
+				oldval, inject_bit, (unsigned long)ip, RTN_Name(INS_Rtn(*((INS *)ins))).c_str());
 		fclose(activationFile);
 		activated=1;
 		fi_iterator++;
@@ -433,6 +433,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 						IARG_UINT32, index,
 						IARG_UINT32, jmpindex,
 						IARG_CONTEXT,
+						IARG_PTR, &ins,
 						IARG_END);
 			return;
 		} else if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
@@ -448,7 +449,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 			if (REG_valid(base_reg)) {
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg, IARG_END);
+											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_PTR, (&ins), IARG_END);
 			} else {
 				cout << "WTF why base_reg not valid?";
 				exit(8);
