@@ -269,6 +269,7 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 		UINT32 inject_bit = rand() % 32;
 		UINT32 oldval = *valp;
 		*valp = *valp ^ (1U << inject_bit);
+	    cout << (char *) routine_name << endl;
 		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
 				oldval, inject_bit, (unsigned long)ip, (char *)routine_name);
 		fclose(activationFile);
