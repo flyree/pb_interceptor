@@ -42,7 +42,7 @@ RegMap reg_map;
 UINT32 InstCounters[4];
 
 
-VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt, VOID * ins)
+VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt, VOID * routine_name)
 {
 	//if(fi_iterator == fi_inject_instance) {
 
@@ -100,7 +100,7 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 		}
 		if(isvalid){
 			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip, RTN_Name(INS_Rtn(*((INS *)ins))).c_str());
+					(unsigned long)ip, (char *)routine_name);
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -157,7 +157,7 @@ VOID inject_SP_FP(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 */
 
 
-VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *ins){
+VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *routine_name){
 	//need to consider FP regs and context
 	//if(fi_iterator == fi_inject_instance) {
 		const REG reg =  reg_map.findInjectReg(reg_num);
@@ -214,7 +214,7 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *ins){
 		}
 		if(isvalid){
 			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip,RTN_Name(INS_Rtn(*((INS*)ins))).c_str());
+					(unsigned long)ip, (char *)routine_name);
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -262,7 +262,7 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 		//fi_iterator ++;
 }
 
-VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *ins) {
+VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 	//if (fi_iterator == fi_inject_instance) {
 		UINT32 *valp = reg->dword;
 		srand((unsigned)time(0));
@@ -270,7 +270,7 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *ins) {
 		UINT32 oldval = *valp;
 		*valp = *valp ^ (1U << inject_bit);
 		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
-				oldval, inject_bit, (unsigned long)ip, RTN_Name(INS_Rtn(*((INS *)ins))).c_str());
+				oldval, inject_bit, (unsigned long)ip, (char *)routine_name);
 		fclose(activationFile);
 		activated=1;
 		fi_iterator++;
@@ -310,7 +310,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	int numW = INS_MaxNumWRegs(ins), randW = 0;
 	UINT32 index = 0;
 	REG reg;
-  
+    const char * routine_name = RTN_Name(INS_Rtn(ins)).c_str();
 #ifdef INCLUDEALLINST	
   int mayChangeControlFlow = 0;
         if(!INS_HasFallThrough(ins))
@@ -433,7 +433,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 						IARG_UINT32, index,
 						IARG_UINT32, jmpindex,
 						IARG_CONTEXT,
-						IARG_PTR, &ins,
+						IARG_PTR, routine_name,
 						IARG_END);
 			return;
 		} else if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
@@ -449,7 +449,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 			if (REG_valid(base_reg)) {
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_PTR, (&ins), IARG_END);
+											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_PTR, routine_name, IARG_END);
 			} else {
 				cout << "WTF why base_reg not valid?";
 				exit(8);
@@ -492,7 +492,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 				IARG_ADDRINT, INS_Address(ins),
 				IARG_UINT32, index,
 				IARG_CONTEXT,
-				IARG_PTR,(&ins),
+				IARG_PTR,routine_name,
 				IARG_END);
 
 #endif        
