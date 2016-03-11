@@ -57,7 +57,7 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 
 			CJmpMap::JmpType jmptype = jmp_map.findJmpType(jmp_num);
 		//PRINT_MESSAGE(3, ("EXECUTING flag reg: Original Reg name %s value %p\n", REG_StringShort(reg).c_str(),
-					(VOID*)PIN_GetContextReg( ctxt, reg )));
+		//			(VOID*)PIN_GetContextReg( ctxt, reg )));
 			if(jmptype == CJmpMap::DEFAULT) {
 				ADDRINT temp = PIN_GetContextReg( ctxt, reg );
 				UINT32 inject_bit = jmp_map.findInjectBit(jmp_num);
