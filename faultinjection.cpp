@@ -92,8 +92,8 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 				}
 				PIN_SetContextReg( ctxt, reg, temp);
 			}
-			PRINT_MESSAGE(3, ("EXECUTING flag reg: Changed Reg name %s value %p\n", REG_StringShort(reg).c_str(), 
-					(VOID*)PIN_GetContextReg( ctxt, reg )));
+			//PRINT_MESSAGE(3, ("EXECUTING flag reg: Changed Reg name %s value %p\n", REG_StringShort(reg).c_str(),
+			//		(VOID*)PIN_GetContextReg( ctxt, reg )));
 			
 			//FI_PrintActivationInfo();	
 			//fi_iterator ++;
@@ -287,18 +287,27 @@ ADDRINT FI_InjectIf() {
 ADDRINT FI_InjectFlagsIf() {
 	InstCounters[0]++;
 	fi_iterator++;
+    cout << "---"
+    cout << fi_iterator << endl;
+    cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
 
 }
 ADDRINT FI_InjectMemIf() {
 	InstCounters[1]++;
 	fi_iterator++;
+    cout << "---"
+    cout << fi_iterator << endl;
+    cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
 
 }
 ADDRINT FI_InjectCSSIf() {
 	InstCounters[2]++;
 	fi_iterator++;
+    cout << "---"
+    cout << fi_iterator << endl;
+    cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
 
 }
@@ -660,22 +669,22 @@ VOID FI_SetSTContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num)
     UINT32 inject_bit = (rand() % (high_bound_bit - low_bound_bit)) + low_bound_bit;
 
     if(inject_bit < 64) {
-        PRINT_MESSAGE(3, ("EXECUTING: Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._sts[i]._raw._lo));
+        //PRINT_MESSAGE(3, ("EXECUTING: Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
+         //       (VOID*)fpContext->fxsave_legacy._sts[i]._raw._lo));
 
         fpContext->fxsave_legacy._sts[i]._raw._lo ^= (1UL << inject_bit);
 
-        PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._sts[i]._raw._lo));
+        //PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
+          //      (VOID*)fpContext->fxsave_legacy._sts[i]._raw._lo));
 
     }
     else {
-        PRINT_MESSAGE(3, ("EXECUTING: Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
+        //PRINT_MESSAGE(3, ("EXECUTING: Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
                 (VOID*)fpContext->fxsave_legacy._sts[i]._raw._hi));
 
         fpContext->fxsave_legacy._sts[i]._raw._hi ^= (1UL << (inject_bit - 64));
 
-        PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
+        //PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
                 (VOID*)fpContext->fxsave_legacy._sts[i]._raw._hi));
 
     }
@@ -714,23 +723,23 @@ VOID FI_SetXMMContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num)
     std::cerr << "Inject into bit " << inject_bit << std::endl;
 
     if(inject_bit < 64) {
-        PRINT_MESSAGE(3, ("EXECUTING: Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[0]));
+       // PRINT_MESSAGE(3, ("EXECUTING: Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
+         //       (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[0]));
 
         fpContext->fxsave_legacy._xmms[i]._vec64[0] ^= (1UL << inject_bit);
 
-        PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[0]));
+        //PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s Low value %p\n", REG_StringShort(reg).c_str(),
+         //       (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[0]));
 
     }
     else {
-        PRINT_MESSAGE(3, ("EXECUTING: Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[1]));
+        //PRINT_MESSAGE(3, ("EXECUTING: Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
+         //       (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[1]));
 
         fpContext->fxsave_legacy._xmms[i]._vec64[1] ^= (1UL << (inject_bit - 64));
 
-        PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[1]));
+        //PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
+          //      (VOID*)fpContext->fxsave_legacy._xmms[i]._vec64[1]));
 
     }
 
@@ -759,13 +768,13 @@ VOID FI_SetYMMContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num)
     UINT32 index = (i * 128 + inject_bit) / (sizeof(UINT8) * 8);
     UINT32 bit = (i * 128 + inject_bit) % (sizeof(UINT8) * 8);
 
-    PRINT_MESSAGE(3, ("EXECUTING: Reg name %s Low value %u\n", REG_StringShort(reg).c_str(),
-            fpContext->_xstate._ymmUpper[index]));
+    //PRINT_MESSAGE(3, ("EXECUTING: Reg name %s Low value %u\n", REG_StringShort(reg).c_str(),
+      //      fpContext->_xstate._ymmUpper[index]));
 
     fpContext->_xstate._ymmUpper[index] ^= (1UL << bit);
 
-    PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s Low value %u\n", REG_StringShort(reg).c_str(),
-            fpContext->_xstate._ymmUpper[index]));
+    //PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s Low value %u\n", REG_StringShort(reg).c_str(),
+      //      fpContext->_xstate._ymmUpper[index]));
 
     PIN_SetContextFPState(ctxt, fpContext);
 }
