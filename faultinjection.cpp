@@ -56,7 +56,7 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
       isvalid = true;
 
 			CJmpMap::JmpType jmptype = jmp_map.findJmpType(jmp_num);
-		PRINT_MESSAGE(3, ("EXECUTING flag reg: Original Reg name %s value %p\n", REG_StringShort(reg).c_str(), 
+		//PRINT_MESSAGE(3, ("EXECUTING flag reg: Original Reg name %s value %p\n", REG_StringShort(reg).c_str(),
 					(VOID*)PIN_GetContextReg( ctxt, reg )));
 			if(jmptype == CJmpMap::DEFAULT) {
 				ADDRINT temp = PIN_GetContextReg( ctxt, reg );
@@ -164,24 +164,24 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *routine_name){
 		int isvalid = 0;
 		if(REG_valid(reg)){
 			isvalid = 1;
-PRINT_MESSAGE(4, ("Executing: Valid Reg name %s\n", REG_StringShort(reg).c_str()));
+//PRINT_MESSAGE(4, ("Executing: Valid Reg name %s\n", REG_StringShort(reg).c_str()));
 
 			if(reg_map.isFloatReg(reg_num)) {
 				//PRINT_MESSAGE(4, ("Executing: Float Reg name %s\n", REG_StringShort(reg).c_str()));
 
         if (REG_is_xmm(reg)) {
-          PRINT_MESSAGE(4, ("Executing: xmm: Reg name %s\n", REG_StringShort(reg).c_str()));
+          //PRINT_MESSAGE(4, ("Executing: xmm: Reg name %s\n", REG_StringShort(reg).c_str()));
 
 					FI_SetXMMContextReg(ctxt, reg, reg_num);
 				}
 				else if (REG_is_ymm(reg)) {
 					
-					PRINT_MESSAGE(4, ("Executing: ymm: Reg name %s\n", REG_StringShort(reg).c_str()));
+					//PRINT_MESSAGE(4, ("Executing: ymm: Reg name %s\n", REG_StringShort(reg).c_str()));
 
 					FI_SetYMMContextReg(ctxt, reg, reg_num);
 				}
 				else if(REG_is_fr_or_x87(reg) || REG_is_mm(reg)) {
-					PRINT_MESSAGE(4, ("Executing: mm or x87: Reg name %s\n", REG_StringShort(reg).c_str()));
+					//PRINT_MESSAGE(4, ("Executing: mm or x87: Reg name %s\n", REG_StringShort(reg).c_str()));
 
 					FI_SetSTContextReg(ctxt, reg, reg_num);
 				}
