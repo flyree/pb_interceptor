@@ -810,6 +810,7 @@ VOID libLoad(RTN rtn,VOID *v)
                 instruction_Instrumentation(ins,v);
             }
             RTN_Close(rtn);
+            break;
         }
     }
 }
