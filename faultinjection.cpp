@@ -164,7 +164,7 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *routine_name){
 		int isvalid = 0;
 		if(REG_valid(reg)){
 			isvalid = 1;
-//PRINT_MESSAGE(4, ("Executing: Valid Reg name %s\n", REG_StringShort(reg).c_str()));
+PRINT_MESSAGE(4, ("Executing: Valid Reg name %s\n", REG_StringShort(reg).c_str()));
 
 			if(reg_map.isFloatReg(reg_num)) {
 				//PRINT_MESSAGE(4, ("Executing: Float Reg name %s\n", REG_StringShort(reg).c_str()));
