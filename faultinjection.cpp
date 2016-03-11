@@ -680,12 +680,12 @@ VOID FI_SetSTContextReg (CONTEXT* ctxt, REG reg, UINT32 reg_num)
     }
     else {
         //PRINT_MESSAGE(3, ("EXECUTING: Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._sts[i]._raw._hi));
+          //      (VOID*)fpContext->fxsave_legacy._sts[i]._raw._hi));
 
         fpContext->fxsave_legacy._sts[i]._raw._hi ^= (1UL << (inject_bit - 64));
 
         //PRINT_MESSAGE(3, ("EXECUTING: Changed Reg name %s High value %p\n", REG_StringShort(reg).c_str(),
-                (VOID*)fpContext->fxsave_legacy._sts[i]._raw._hi));
+         //       (VOID*)fpContext->fxsave_legacy._sts[i]._raw._hi));
 
     }
 
