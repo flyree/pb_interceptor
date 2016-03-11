@@ -287,7 +287,7 @@ ADDRINT FI_InjectIf() {
 ADDRINT FI_InjectFlagsIf() {
 	InstCounters[0]++;
 	fi_iterator++;
-    cout << "---"
+    cout << "---";
     cout << fi_iterator << endl;
     cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
@@ -296,7 +296,7 @@ ADDRINT FI_InjectFlagsIf() {
 ADDRINT FI_InjectMemIf() {
 	InstCounters[1]++;
 	fi_iterator++;
-    cout << "---"
+    cout << "---";
     cout << fi_iterator << endl;
     cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
@@ -305,7 +305,7 @@ ADDRINT FI_InjectMemIf() {
 ADDRINT FI_InjectCSSIf() {
 	InstCounters[2]++;
 	fi_iterator++;
-    cout << "---"
+    cout << "---";
     cout << fi_iterator << endl;
     cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
