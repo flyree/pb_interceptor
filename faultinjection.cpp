@@ -100,7 +100,7 @@ VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* 
 		}
 		if(isvalid){
 			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip, (char *)routine_name);
+					(unsigned long)ip, (const char *)routine_name);
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -214,7 +214,7 @@ VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *routine_name){
 		}
 		if(isvalid){
 			fprintf(activationFile, "Activated: Valid Reg name %s, ip %lx inside %s\n", REG_StringShort(reg).c_str(),
-					(unsigned long)ip, (char *)routine_name);
+					(unsigned long)ip, (const char *)routine_name);
 			fclose(activationFile); // can crash after this!
 			activated = 1;
 			fi_iterator ++;
@@ -271,7 +271,7 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 		*valp = *valp ^ (1U << inject_bit);
 	    cout << (char *) routine_name << endl;
 		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
-				oldval, inject_bit, (unsigned long)ip, (char *)routine_name);
+				oldval, inject_bit, (unsigned long)ip, (const char *)routine_name);
 		fclose(activationFile);
 		activated=1;
 		fi_iterator++;
@@ -321,6 +321,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	UINT32 index = 0;
 	REG reg;
     const char * routine_name = RTN_Name(INS_Rtn(ins)).c_str();
+    cout << *routine_name << endl;
 #ifdef INCLUDEALLINST	
   int mayChangeControlFlow = 0;
         if(!INS_HasFallThrough(ins))

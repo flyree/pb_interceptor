@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="755aca87-7e0a-42a8-9659-9d473c12c884" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faultinjection.cpp" afterPath="$PROJECT_DIR$/faultinjection.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faultinjection.h" afterPath="$PROJECT_DIR$/faultinjection.h" />
     </list>
     <ignored path="pb_interceptor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -129,13 +128,13 @@
       <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7598989">
-              <caret line="825" column="83" selection-start-line="825" selection-start-column="83" selection-end-line="825" selection-end-column="83" />
+            <state vertical-scroll-proportion="0.7708509">
+              <caret line="102" column="46" selection-start-line="102" selection-start-column="46" selection-end-line="102" selection-end-column="46" />
               <folding>
-                <element signature="e#9873#11297#0" expanded="true" />
-                <element signature="e#11619#11797#0" expanded="true" />
-                <element signature="e#11822#11986#0" expanded="true" />
-                <element signature="e#12230#12338#0" expanded="true" />
+                <element signature="e#9926#11350#0" expanded="true" />
+                <element signature="e#11672#11850#0" expanded="true" />
+                <element signature="e#11875#12039#0" expanded="true" />
+                <element signature="e#12283#12391#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -458,10 +457,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#9873#11297#0" expanded="true" />
-            <element signature="e#11619#11797#0" expanded="true" />
-            <element signature="e#11822#11986#0" expanded="true" />
-            <element signature="e#12230#12338#0" expanded="true" />
+            <element signature="e#9926#11350#0" expanded="true" />
+            <element signature="e#11672#11850#0" expanded="true" />
+            <element signature="e#11875#12039#0" expanded="true" />
+            <element signature="e#12283#12391#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -573,13 +572,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7598989">
-          <caret line="825" column="83" selection-start-line="825" selection-start-column="83" selection-end-line="825" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.7708509">
+          <caret line="102" column="46" selection-start-line="102" selection-start-column="46" selection-end-line="102" selection-end-column="46" />
           <folding>
-            <element signature="e#9873#11297#0" expanded="true" />
-            <element signature="e#11619#11797#0" expanded="true" />
-            <element signature="e#11822#11986#0" expanded="true" />
-            <element signature="e#12230#12338#0" expanded="true" />
+            <element signature="e#9926#11350#0" expanded="true" />
+            <element signature="e#11672#11850#0" expanded="true" />
+            <element signature="e#11875#12039#0" expanded="true" />
+            <element signature="e#12283#12391#0" expanded="true" />
           </folding>
         </state>
       </provider>
