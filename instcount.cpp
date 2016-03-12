@@ -27,7 +27,7 @@ static UINT64 fi_ccs = 0;
 static UINT64 fi_sp = 0;
 static UINT64 fi_bp = 0;
 
-VOID countAllInst() {fi_all++;}
+VOID countAllInst() {fi_all++; cout << fi_all << endl;}
 VOID countCCSInst() {fi_ccs++;}
 VOID countSPInst() {fi_sp++;}
 VOID countBPInst() { fi_bp++;}

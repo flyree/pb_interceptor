@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="755aca87-7e0a-42a8-9659-9d473c12c884" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faultinjection.cpp" afterPath="$PROJECT_DIR$/faultinjection.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/instcount.cpp" afterPath="$PROJECT_DIR$/instcount.cpp" />
     </list>
     <ignored path="pb_interceptor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,12 +33,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="instcount.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="instcount.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/instcount.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-              <folding />
+            <state vertical-scroll-proportion="0.25947282">
+              <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
+              <folding>
+                <element signature="e#2698#2872#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/instselector.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="23" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="23" />
+              <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -107,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/utils.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+              <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -123,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.505476">
-              <caret line="298" column="18" selection-start-line="298" selection-start-column="18" selection-end-line="298" selection-end-column="18" />
+            <state vertical-scroll-proportion="-286.74075">
+              <caret line="818" column="51" selection-start-line="818" selection-start-column="51" selection-end-line="818" selection-end-column="51" />
               <folding>
                 <element signature="e#9873#11297#0" expanded="true" />
                 <element signature="e#11619#11797#0" expanded="true" />
@@ -149,9 +151,9 @@
         <option value="$PROJECT_DIR$/instselector.h" />
         <option value="$PROJECT_DIR$/libload.cpp" />
         <option value="$PROJECT_DIR$/libload.h" />
-        <option value="$PROJECT_DIR$/instcount.cpp" />
         <option value="$PROJECT_DIR$/faultinjection.h" />
         <option value="$PROJECT_DIR$/faultinjection.cpp" />
+        <option value="$PROJECT_DIR$/instcount.cpp" />
       </list>
     </option>
   </component>
@@ -304,7 +306,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -312,7 +316,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2698#2872#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -376,7 +382,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="e#2698#2872#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -488,26 +496,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/memtrack.h">
+    <entry file="file://$PROJECT_DIR$/faultinjection.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/memtrack.cpp">
+    <entry file="file://$PROJECT_DIR$/instselector.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/instselector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -528,47 +528,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultinjection.h">
+    <entry file="file://$PROJECT_DIR$/instselector.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.cpp">
+    <entry file="file://$PROJECT_DIR$/memtrack.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/instselector.cpp">
+    <entry file="file://$PROJECT_DIR$/memtrack.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="23" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/instcount.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.505476">
-          <caret line="298" column="18" selection-start-line="298" selection-start-column="18" selection-end-line="298" selection-end-column="18" />
+        <state vertical-scroll-proportion="-286.74075">
+          <caret line="818" column="51" selection-start-line="818" selection-start-column="51" selection-end-line="818" selection-end-column="51" />
           <folding>
             <element signature="e#9873#11297#0" expanded="true" />
             <element signature="e#11619#11797#0" expanded="true" />
             <element signature="e#11822#11986#0" expanded="true" />
             <element signature="e#12230#12338#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/instcount.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25947282">
+          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
+          <folding>
+            <element signature="e#2698#2872#0" expanded="true" />
           </folding>
         </state>
       </provider>
