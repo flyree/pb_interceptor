@@ -624,9 +624,9 @@ int main(int argc, char *argv[])
 	get_instance_number(instcount_file.Value().c_str());
     if (is_inlib.Value())
     {
-        cout << "True or false" << endl;
+
 		parseLibNames(libnames.Value());
-        RTN_AddInstrumentFunction(libLoad, 0);
+        INS_AddInstrumentFunction(libLoad, 0);
     }
     else{
         if (enable_fi.Value())
@@ -806,9 +806,10 @@ bool is_frameptrReg(REG reg){
 
 
 
-VOID libLoad(RTN rtn,VOID *v)
+VOID libLoad(INS ins,VOID *v)
 {
-	for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
+	/*
+    for (vector<string>::iterator it = libs.begin(); it != libs.end(); ++it)
     {
         string  image = IMG_Name(SEC_Img(RTN_Sec(rtn)));
         if (image.find(*it) != string::npos)
@@ -819,6 +820,19 @@ VOID libLoad(RTN rtn,VOID *v)
                 instruction_Instrumentation(ins,v);
             }
             RTN_Close(rtn);
+            break;
+        }
+    }*/
+    if (!RTN_Valid(INS_Rtn(ins))) { // some library instructions do not have rtn !?
+        LOG("Invalid RTN " + INS_Disassemble(ins) + "\n");
+        return;
+    }
+    std::string image = IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins))));
+    //std::cout << image.c_str() << std::endl;
+    for (std::vector<std::string>::iterator it = libs.begin(); it != libs.end(); ++it) {
+        // std::cout << "it " << *it << std::endl;
+        if (image.find(*it) != std::string::npos) {
+            instruction_Instrumentation(ins,v);
             break;
         }
     }
