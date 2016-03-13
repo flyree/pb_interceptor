@@ -45,7 +45,7 @@ UINT32 InstCounters[4] ={0};
 VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt, VOID * routine_name)
 {
 	//if(fi_iterator == fi_inject_instance) {
-
+    cout << "here1" << endl;
     bool isvalid = false;
 
     const REG reg =  reg_map.findInjectReg(reg_num);
@@ -160,6 +160,7 @@ VOID inject_SP_FP(VOID *ip, UINT32 reg_num, CONTEXT *ctxt){
 VOID inject_CCS(VOID *ip, UINT32 reg_num, CONTEXT *ctxt, VOID *routine_name){
 	//need to consider FP regs and context
 	//if(fi_iterator == fi_inject_instance) {
+    cout << "here2" << endl;
 		const REG reg =  reg_map.findInjectReg(reg_num);
 		int isvalid = 0;
 		if(REG_valid(reg)){
@@ -264,6 +265,7 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 
 VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 	//if (fi_iterator == fi_inject_instance) {
+    cout << "here3" << endl;
 		UINT32 *valp = reg->dword;
 		srand((unsigned)time(0));
 		UINT32 inject_bit = rand() % 32;
@@ -320,6 +322,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	int numW = INS_MaxNumWRegs(ins), randW = 0;
 	UINT32 index = 0;
 	REG reg;
+    cout << "here5" << endl;
     const char * routine_name = RTN_Name(INS_Rtn(ins)).c_str();
     cout << routine_name << "+++"<<IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins)))) << endl;
 #ifdef INCLUDEALLINST	
@@ -824,6 +827,7 @@ VOID libLoad(INS ins,VOID *v)
             break;
         }
     }*/
+    cout << "here7" << endl;
     if (!RTN_Valid(INS_Rtn(ins))) { // some library instructions do not have rtn !?
         LOG("Invalid RTN " + INS_Disassemble(ins) + "\n");
         return;
