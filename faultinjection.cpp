@@ -39,7 +39,7 @@ KNOB<string> instcount_file(KNOB_MODE_WRITEONCE, "pintool",
 CJmpMap jmp_map;
 FILE *activationFile;
 RegMap reg_map;
-UINT32 InstCounters[4];
+UINT32 InstCounters[4] ={0};
 
 
 VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt, VOID * routine_name)
@@ -287,27 +287,27 @@ ADDRINT FI_InjectIf() {
 ADDRINT FI_InjectFlagsIf() {
 	InstCounters[0]++;
 	fi_iterator++;
-    cout << "---";
-    cout << fi_iterator << endl;
-    cout << fi_inject_instance << endl;
+    //cout << "---";
+    //cout << fi_iterator << endl;
+    //cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
 
 }
 ADDRINT FI_InjectMemIf() {
 	InstCounters[1]++;
 	fi_iterator++;
-    cout << "---";
-    cout << fi_iterator << endl;
-    cout << fi_inject_instance << endl;
+    //cout << "---";
+    //cout << fi_iterator << endl;
+    //cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
 
 }
 ADDRINT FI_InjectCSSIf() {
 	InstCounters[2]++;
 	fi_iterator++;
-    cout << "---";
-    cout << fi_iterator << endl;
-    cout << fi_inject_instance << endl;
+    //cout << "---";
+    //cout << fi_iterator << endl;
+    //cout << fi_inject_instance << endl;
 	return (fi_iterator==fi_inject_instance);
 
 }
