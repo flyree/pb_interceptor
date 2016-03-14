@@ -266,19 +266,32 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 	//if (fi_iterator == fi_inject_instance) {
     cout << "here3" << endl;
-		UINT32 *valp = reg->dword;
-      if (valp == NULL)
-          cout << "fuck! thats it" << endl;
+	//	UINT32 *valp = reg->dword;
+     // if (valp == NULL)
+      //    cout << "fuck! thats it" << endl;
     cout << "line1" << endl;
-		srand((unsigned)time(0));
-		UINT32 inject_bit = rand() % 32;
-		UINT32 oldval = valp[0];
+	//	srand((unsigned)time(0));
+//		UINT32 inject_bit = rand() % 32;
+//		UINT32 oldval = valp[0];
     cout << "line2" << endl;
 		*valp = *valp ^ (1U << inject_bit);
 	    cout << (const char *) routine_name << endl;
     cout << "line3" << endl;
+    /*
+     * try to use existing code
+     * */
+    ADDRINT temp = PIN_GetContextReg( ctxt, reg );
+    srand((unsigned)time(0));
+    UINT32 low_bound_bit = reg_map.findLowBoundBit(reg_num);
+    UINT32 high_bound_bit = reg_map.findHighBoundBit(reg_num);
+
+    UINT32 inject_bit = (rand() % (high_bound_bit - low_bound_bit)) + low_bound_bit;
+
+    temp = (ADDRINT)(temp ^ (1UL << inject_bit));
+
+    PIN_SetContextReg( ctxt, reg, temp);
 		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
-				oldval, inject_bit, (unsigned long)ip, (const char *)routine_name);
+				temp, inject_bit, (unsigned long)ip, (const char *)routine_name);
 		fclose(activationFile);
 		activated=1;
 		fi_iterator++;
