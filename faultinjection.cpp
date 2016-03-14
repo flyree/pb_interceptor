@@ -274,8 +274,8 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,CONTEXT *ctxt, VOID *rout
 //		UINT32 inject_bit = rand() % 32;
 //		UINT32 oldval = valp[0];
     cout << "line2" << endl;
-		*valp = *valp ^ (1U << inject_bit);
-	    cout << (const char *) routine_name << endl;
+	//	*valp = *valp ^ (1U << inject_bit);
+	//    cout << (const char *) routine_name << endl;
     cout << "line3" << endl;
     /*
      * try to use existing code
