@@ -341,8 +341,8 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	UINT32 index = 0;
 	REG reg;
    // cout << "here5" << endl;
-    string s_temp(RTN_Name(INS_Rtn(ins)));
-    const char * routine_name = s_temp.c_str();
+    string *s_temp = new string(RTN_Name(INS_Rtn(ins)));
+    const char * routine_name = s_temp->c_str();
     //cout << routine_name << "+++"<<IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins)))) << endl;
 #ifdef INCLUDEALLINST	
   int mayChangeControlFlow = 0;
