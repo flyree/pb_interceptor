@@ -267,6 +267,8 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 	//if (fi_iterator == fi_inject_instance) {
     cout << "here3" << endl;
 		UINT32 *valp = reg->dword;
+      if (valp == NULL)
+          cout << "fuck! thats it" << endl;
     cout << "line1" << endl;
 		srand((unsigned)time(0));
 		UINT32 inject_bit = rand() % 32;
