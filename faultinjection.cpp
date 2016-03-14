@@ -282,11 +282,11 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,CONTEXT *ctxt, VOID *rout
      * */
     ADDRINT temp = PIN_GetContextReg( ctxt, reg );
     srand((unsigned)time(0));
-    UINT32 low_bound_bit = reg_map.findLowBoundBit(reg_num);
-    UINT32 high_bound_bit = reg_map.findHighBoundBit(reg_num);
+    //UINT32 low_bound_bit = reg_map.findLowBoundBit(reg_num);
+    //UINT32 high_bound_bit = reg_map.findHighBoundBit(reg_num);
 
-    UINT32 inject_bit = (rand() % (high_bound_bit - low_bound_bit)) + low_bound_bit;
-
+    //UINT32 inject_bit = (rand() % (high_bound_bit - low_bound_bit)) + low_bound_bit;
+    UINT32 inject_bit = rand() % 32;
     temp = (ADDRINT)(temp ^ (1UL << inject_bit));
 
     PIN_SetContextReg( ctxt, reg, temp);
