@@ -263,7 +263,7 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 		//fi_iterator ++;
 }
 
-VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
+VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,CONTEXT *ctxt, VOID *routine_name) {
 	//if (fi_iterator == fi_inject_instance) {
     cout << "here3" << endl;
 	//	UINT32 *valp = reg->dword;
@@ -481,7 +481,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 			if (REG_valid(base_reg)) {
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_PTR, routine_name, IARG_END);
+											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_CONTEXT,IARG_PTR, routine_name,IARG_END);
 			} else {
 				cout << "WTF why base_reg not valid?";
 				exit(8);
@@ -511,7 +511,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 		if (REG_valid(reg)) {
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_PTR, routine_name, IARG_END);
+										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_CONTEXT,IARG_PTR, routine_name, IARG_END);
 			return;
 		}
 
