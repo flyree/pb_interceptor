@@ -289,9 +289,9 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
     //UINT32 inject_bit = rand() % 32;
     //temp = (ADDRINT)(temp ^ (1UL << inject_bit));
 
-    PIN_SetContextReg( ctxt, reg, temp);
+    //PIN_SetContextReg( ctxt, reg, temp);
 		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
-				temp, inject_bit, (unsigned long)ip, (const char *)routine_name);
+				oldval, inject_bit, (unsigned long)ip, (const char *)routine_name);
 		fclose(activationFile);
 		activated=1;
 		fi_iterator++;
@@ -341,7 +341,8 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	UINT32 index = 0;
 	REG reg;
     cout << "here5" << endl;
-    const char * routine_name = new string(RTN_Name(INS_Rtn(ins))).c_str();
+    string s_temp = new string(TN_Name(INS_Rtn(ins)));
+    const char * routine_name = s_temp.c_str();
     cout << routine_name << "+++"<<IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins)))) << endl;
 #ifdef INCLUDEALLINST	
   int mayChangeControlFlow = 0;
