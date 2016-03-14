@@ -27,7 +27,7 @@ static UINT64 fi_ccs = 0;
 static UINT64 fi_sp = 0;
 static UINT64 fi_bp = 0;
 
-VOID countAllInst() {fi_all++; cout << fi_all << endl;}
+VOID countAllInst() {fi_all++;}
 VOID countCCSInst() {fi_ccs++;}
 VOID countSPInst() {fi_sp++;}
 VOID countBPInst() { fi_bp++;}
@@ -62,8 +62,8 @@ VOID CountInst(INS ins, VOID *v)
         }
     }
 
-    LOG("I am in "+RTN_Name(INS_Rtn(ins))+"\n");
-    LOG("I am in "+IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins))))+"\n");
+    //LOG("I am in "+RTN_Name(INS_Rtn(ins))+"\n");
+    //LOG("I am in "+IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins))))+"\n");
 #ifdef INCLUDEALLINST
  	int numW = INS_MaxNumWRegs(ins), mayChangeControlFlow = 0;
    if(!INS_HasFallThrough(ins))
