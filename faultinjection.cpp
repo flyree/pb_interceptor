@@ -343,7 +343,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
    // cout << "here5" << endl;
     string s_temp(RTN_Name(INS_Rtn(ins)));
     const char * routine_name = s_temp.c_str();
-    cout << routine_name << "+++"<<IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins)))) << endl;
+    //cout << routine_name << "+++"<<IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins)))) << endl;
 #ifdef INCLUDEALLINST	
   int mayChangeControlFlow = 0;
         if(!INS_HasFallThrough(ins))
