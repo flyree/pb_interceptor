@@ -263,31 +263,31 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 		//fi_iterator ++;
 }
 
-VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,CONTEXT *ctxt, VOID *routine_name) {
+VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 	//if (fi_iterator == fi_inject_instance) {
-    cout << "here3" << endl;
-	//	UINT32 *valp = reg->dword;
+   // cout << "here3" << endl;
+		UINT32 *valp = reg->dword;
      // if (valp == NULL)
       //    cout << "fuck! thats it" << endl;
     cout << "line1" << endl;
-	//	srand((unsigned)time(0));
-//		UINT32 inject_bit = rand() % 32;
-//		UINT32 oldval = valp[0];
+		srand((unsigned)time(0));
+		UINT32 inject_bit = rand() % 32;
+		UINT32 oldval = valp[0];
     cout << "line2" << endl;
-	//	*valp = *valp ^ (1U << inject_bit);
-	//    cout << (const char *) routine_name << endl;
+		*valp = *valp ^ (1U << inject_bit);
+	    cout << (const char *) routine_name << endl;
     cout << "line3" << endl;
     /*
      * try to use existing code
      * */
-    ADDRINT temp = PIN_GetContextReg( ctxt, reg );
-    srand((unsigned)time(0));
+    //ADDRINT temp = PIN_GetContextReg( ctxt, reg );
+    //srand((unsigned)time(0));
     //UINT32 low_bound_bit = reg_map.findLowBoundBit(reg_num);
     //UINT32 high_bound_bit = reg_map.findHighBoundBit(reg_num);
 
     //UINT32 inject_bit = (rand() % (high_bound_bit - low_bound_bit)) + low_bound_bit;
-    UINT32 inject_bit = rand() % 32;
-    temp = (ADDRINT)(temp ^ (1UL << inject_bit));
+    //UINT32 inject_bit = rand() % 32;
+    //temp = (ADDRINT)(temp ^ (1UL << inject_bit));
 
     PIN_SetContextReg( ctxt, reg, temp);
 		fprintf(activationFile, "Activated: Memory address injection. [oldval,inject_bit]=[%" PRIu32 ",%" PRIu32 "], ip %lx inside %s\n",
@@ -341,7 +341,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 	UINT32 index = 0;
 	REG reg;
     cout << "here5" << endl;
-    const char * routine_name = RTN_Name(INS_Rtn(ins)).c_str();
+    const char * routine_name = new string(RTN_Name(INS_Rtn(ins))).c_str();
     cout << routine_name << "+++"<<IMG_Name(SEC_Img(RTN_Sec(INS_Rtn(ins)))) << endl;
 #ifdef INCLUDEALLINST	
   int mayChangeControlFlow = 0;
@@ -481,7 +481,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 			if (REG_valid(base_reg)) {
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_CONTEXT,IARG_PTR, routine_name,IARG_END);
+											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_PTR, routine_name,IARG_END);
 			} else {
 				cout << "WTF why base_reg not valid?";
 				exit(8);
@@ -511,7 +511,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 		if (REG_valid(reg)) {
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_CONTEXT,IARG_PTR, routine_name, IARG_END);
+										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_PTR, routine_name, IARG_END);
 			return;
 		}
 
