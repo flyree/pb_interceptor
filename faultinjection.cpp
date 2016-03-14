@@ -269,11 +269,11 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
 		UINT32 *valp = reg->dword;
      // if (valp == NULL)
       //    cout << "fuck! thats it" << endl;
-    //cout << "line1" << endl;
+    cout << "line1" << endl;
 		srand((unsigned)time(0));
 		UINT32 inject_bit = rand() % 32;
 		UINT32 oldval = valp[0];
-    //cout << "line2" << endl;
+    cout << "line2" << endl;
 		*valp = *valp ^ (1U << inject_bit);
 	    cout << (const char *) routine_name << endl;
     //cout << "line3" << endl;
