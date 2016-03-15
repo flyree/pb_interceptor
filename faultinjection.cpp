@@ -291,7 +291,7 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,UINT32 size, VOID *routin
     UINT8* temp_p = (UINT8*) reg->byte;
     srand((unsigned)time(0));
     //UINT32 size = sizeof(reg);
-    UINT32 inject_bit = rand() % (size * 8/* bits in one byte*/);
+    UINT32 inject_bit = rand() % (size/* bits in one byte*/);
 
     UINT32 byte_num = inject_bit / 8;
     UINT32 offset_num = inject_bit % 8;
