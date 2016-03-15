@@ -273,7 +273,7 @@ VOID FI_InjectFault_Mem(VOID * ip, VOID *memp, UINT32 size)
 		//fi_iterator ++;
 }
 
-VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
+VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,UINT32 size, VOID *routine_name) {
 	//if (fi_iterator == fi_inject_instance) {
    // cout << "here3" << endl;
 	//	UINT32 *valp = reg->dword;
