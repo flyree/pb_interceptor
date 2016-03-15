@@ -128,13 +128,13 @@
       <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8609941">
-              <caret line="302" column="31" selection-start-line="302" selection-start-column="31" selection-end-line="302" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.7203033">
+              <caret line="535" column="93" selection-start-line="535" selection-start-column="93" selection-end-line="535" selection-end-column="93" />
               <folding>
-                <element signature="e#11170#12594#0" expanded="true" />
-                <element signature="e#12916#13094#0" expanded="true" />
-                <element signature="e#13119#13283#0" expanded="true" />
-                <element signature="e#13527#13635#0" expanded="true" />
+                <element signature="e#11354#12778#0" expanded="true" />
+                <element signature="e#13100#13278#0" expanded="true" />
+                <element signature="e#13303#13467#0" expanded="true" />
+                <element signature="e#13711#13819#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -457,10 +457,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11170#12594#0" expanded="true" />
-            <element signature="e#12916#13094#0" expanded="true" />
-            <element signature="e#13119#13283#0" expanded="true" />
-            <element signature="e#13527#13635#0" expanded="true" />
+            <element signature="e#11354#12778#0" expanded="true" />
+            <element signature="e#13100#13278#0" expanded="true" />
+            <element signature="e#13303#13467#0" expanded="true" />
+            <element signature="e#13711#13819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -492,14 +492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/instselector.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -570,15 +562,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/instselector.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8609941">
-          <caret line="302" column="31" selection-start-line="302" selection-start-column="31" selection-end-line="302" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.7203033">
+          <caret line="535" column="93" selection-start-line="535" selection-start-column="93" selection-end-line="535" selection-end-column="93" />
           <folding>
-            <element signature="e#11170#12594#0" expanded="true" />
-            <element signature="e#12916#13094#0" expanded="true" />
-            <element signature="e#13119#13283#0" expanded="true" />
-            <element signature="e#13527#13635#0" expanded="true" />
+            <element signature="e#11354#12778#0" expanded="true" />
+            <element signature="e#13100#13278#0" expanded="true" />
+            <element signature="e#13303#13467#0" expanded="true" />
+            <element signature="e#13711#13819#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -42,6 +42,16 @@ RegMap reg_map;
 UINT32 InstCounters[4] ={0};
 
 
+UINT32 getRegSize(REG reg)
+{
+    if (REG_is_gr8(reg))
+        return 8;
+    else if (REG_is_gr16(reg))
+        return 16;
+    else
+        return 32;
+}
+
 VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt, VOID * routine_name)
 {
 	//if(fi_iterator == fi_inject_instance) {
@@ -278,7 +288,8 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg, VOID *routine_name) {
     cout << "line3" << endl;
     UINT8* temp_p = (UINT8*) reg->dword;
     srand((unsigned)time(0));
-    UINT32 inject_bit = rand() % (size * 8/* bits in one byte*/);
+    //UINT32 size = sizeof(reg);
+    UINT32 inject_bit = rand() % (32 * 8/* bits in one byte*/);
 
     UINT32 byte_num = inject_bit / 8;
     UINT32 offset_num = inject_bit % 8;
@@ -489,9 +500,10 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 //								IARG_END);
 			REG base_reg = INS_MemoryBaseReg(ins);
 			if (REG_valid(base_reg)) {
+                UNIT32 size = getRegSize(base_reg);
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_PTR, routine_name,IARG_END);
+											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_UINT32,size,IARG_PTR, routine_name,IARG_END);
 			} else {
 				cout << "WTF why base_reg not valid?";
 				exit(8);
@@ -519,9 +531,10 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 		}
 
 		if (REG_valid(reg)) {
+            UNIT32 size = getRegSize(reg);
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
-										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_PTR, routine_name, IARG_END);
+										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_UINT32,size,IARG_PTR, routine_name, IARG_END);
 			return;
 		}
 
