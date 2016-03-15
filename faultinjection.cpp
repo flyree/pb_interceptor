@@ -48,8 +48,10 @@ UINT32 getRegSize(REG reg)
         return 8;
     else if (REG_is_gr16(reg))
         return 16;
-    else
+    else if (REG_is_gr32(reg))
         return 32;
+    else
+        return 64;
 }
 
 VOID FI_InjectFault_FlagReg(VOID * ip, UINT32 reg_num, UINT32 jmp_num, CONTEXT* ctxt, VOID * routine_name)
