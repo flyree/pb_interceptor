@@ -286,7 +286,7 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,UINT32 size, VOID *routin
     //cout << "line2" << endl;
 	//	*valp = *valp ^ (1U << inject_bit);
     cout << "line3" << endl;
-    UINT8* temp_p = (UINT8*) reg->dword;
+    UINT8* temp_p = (UINT8*) reg->byte;
     srand((unsigned)time(0));
     //UINT32 size = sizeof(reg);
     UINT32 inject_bit = rand() % (size * 8/* bits in one byte*/);
