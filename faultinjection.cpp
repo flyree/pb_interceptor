@@ -500,7 +500,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 //								IARG_END);
 			REG base_reg = INS_MemoryBaseReg(ins);
 			if (REG_valid(base_reg)) {
-                UNIT32 size = getRegSize(base_reg);
+                UINT32 size = getRegSize(base_reg);
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
 											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_UINT32,size,IARG_PTR, routine_name,IARG_END);
@@ -531,7 +531,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 		}
 
 		if (REG_valid(reg)) {
-            UNIT32 size = getRegSize(reg);
+            UINT32 size = getRegSize(reg);
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
 										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_UINT32,size,IARG_PTR, routine_name, IARG_END);
