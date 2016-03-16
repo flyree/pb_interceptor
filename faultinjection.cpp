@@ -293,6 +293,8 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,UINT32 size, VOID *routin
     UINT8* temp_p = (UINT8*) reg->byte;
     srand((unsigned)time(0));
     //UINT32 size = sizeof(reg);
+    if (size > 32)
+        size = 32;
     UINT32 inject_bit = rand() % (size/* bits in one byte*/);
 
     UINT32 byte_num = inject_bit / 8;
@@ -544,7 +546,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 		if (REG_valid(reg)) {
             UINT32 size = getRegSize(reg);
             cout <<"SIZE: "<<size << endl;
-            cout << REG_StringShort(reg).c_str();
+            cout << REG_StringShort(reg).c_str() << endl;
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
 										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_UINT32,size,IARG_PTR, routine_name, IARG_END);
