@@ -513,7 +513,8 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 			if (REG_valid(base_reg)) {
                 UINT32 size = getRegSize(base_reg);
                 cout << "SIZE: "<<size << endl;
-                cout << REG_StringShort(reg).c_str();
+                cout << REG_StringShort(reg).c_str() << endl;
+                cout << INS_Disassemble(ins) << endl;
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
 											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_UINT32,size,IARG_PTR, routine_name,IARG_END);
@@ -547,6 +548,7 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
             UINT32 size = getRegSize(reg);
             cout <<"SIZE: "<<size << endl;
             cout << REG_StringShort(reg).c_str() << endl;
+            cout << INS_Disassemble(ins) << endl;
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
 										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_UINT32,size,IARG_PTR, routine_name, IARG_END);
