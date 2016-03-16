@@ -304,6 +304,7 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,UINT32 size, VOID *routin
     cout << offset_num << endl;
     cout << inject_bit << endl;
     cout << size << endl;
+    cout << (unsigned long)ip << endl;
     *(temp_p + byte_num) = *(temp_p + byte_num) ^ (1U << offset_num);
     cout << "line4" << endl;
 	    cout << (const char *) routine_name << endl;
