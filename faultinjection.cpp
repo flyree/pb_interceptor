@@ -283,13 +283,13 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,UINT32 size, VOID *routin
 	//	UINT32 *valp = reg->dword;
      // if (valp == NULL)
       //    cout << "fuck! thats it" << endl;
-    cout << "line1" << endl;
+    //cout << "line1" << endl;
 	//	srand((unsigned)time(0));
 	//	UINT32 inject_bit = rand() % 32;
 	//	UINT32 oldval = valp[0];
     //cout << "line2" << endl;
 	//	*valp = *valp ^ (1U << inject_bit);
-    cout << "line3" << endl;
+    //cout << "line3" << endl;
     UINT8* temp_p = (UINT8*) reg->byte;
     srand((unsigned)time(0));
     //UINT32 size = sizeof(reg);
@@ -297,15 +297,15 @@ VOID FI_InjectFaultMemAddr(VOID *ip, PIN_REGISTER *reg,UINT32 size, VOID *routin
 
     UINT32 byte_num = inject_bit / 8;
     UINT32 offset_num = inject_bit % 8;
-    cout << "line2" << endl;
+    /*cout << "line2" << endl;
     cout << byte_num << endl;
     cout << offset_num << endl;
     cout << inject_bit << endl;
     cout << size << endl;
-    cout << (unsigned long)ip << endl;
+    cout << (unsigned long)ip << endl;*/
     *(temp_p + byte_num) = *(temp_p + byte_num) ^ (1U << offset_num);
-    cout << "line4" << endl;
-	    cout << (const char *) routine_name << endl;
+    //cout << "line4" << endl;
+	 //   cout << (const char *) routine_name << endl;
     //cout << "line3" << endl;
     /*
      * try to use existing code
@@ -511,10 +511,6 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 			REG base_reg = INS_MemoryBaseReg(ins);
 			if (REG_valid(base_reg)) {
                 UINT32 size = getRegSize(base_reg);
-                if ( REG_StringShort(base_reg).compare(string("rip")) == 0)
-                {
-                    cerr << "Expected to crash because of rip" << endl;
-                }
 				INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 				INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
 											 IARG_INST_PTR, IARG_REG_REFERENCE, base_reg,IARG_UINT32,size,IARG_PTR, routine_name,IARG_END);
@@ -546,10 +542,6 @@ VOID instruction_Instrumentation(INS ins, VOID *v){
 
 		if (REG_valid(reg)) {
             UINT32 size = getRegSize(reg);
-            if ( REG_StringShort(reg).compare(string("rip")) == 0)
-            {
-                cerr << "Expected to crash because of rip" << endl;
-            }
 			INS_InsertIfPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectMemIf, IARG_END);
 			INS_InsertThenPredicatedCall(ins, IPOINT_BEFORE, (AFUNPTR) FI_InjectFaultMemAddr,
 										 IARG_INST_PTR, IARG_REG_REFERENCE, reg,IARG_UINT32,size,IARG_PTR, routine_name, IARG_END);
