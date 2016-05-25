@@ -19,7 +19,7 @@ static UINT64 allinst = 0;
 
 
 VOID printip(void *ip){
-    cout << ip << end;
+    cout << ip << endl;
 }
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
