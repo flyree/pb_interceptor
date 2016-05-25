@@ -13,7 +13,7 @@
 #include "utils.h"
 
 KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
-                      "randinst", 0, "Total number of instructions");
+                      "randinst","0", "Total number of instructions");
 
 static UINT64 allinst = 0;
 
