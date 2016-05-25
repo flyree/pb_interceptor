@@ -73,6 +73,8 @@ $(OBJDIR)memtrack.o: memtrack.cpp
 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) $(OUTOPT) $@ $<
 $(OBJDIR)libload.o: libload.cpp
 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) $(OUTOPT) $@ $<
+$(OBJDIR)randomInst.o: randomInst.cpp
+	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) $(OUTOPT) $@ $<
 # $(UTIL_OBJ) : fi_util.cpp fi_util.h
 # 	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT} $@ $<
 	
