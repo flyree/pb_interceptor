@@ -42,10 +42,10 @@ VOID CountInst(INS ins, VOID *v)
 VOID Fini(INT32 code, VOID *v)
 {
     // Write to a file since cout and cerr maybe closed by the application
-    ofstream OutFile;
-    OutFile.open(instcount_file.Value().c_str());
-    OutFile.setf(ios::showbase);
-    OutFile.close();
+    //ofstream OutFile;
+    //OutFile.open(instcount_file.Value().c_str());
+    //OutFile.setf(ios::showbase);
+    //OutFile.close();
 }
 
 /* ===================================================================== */
