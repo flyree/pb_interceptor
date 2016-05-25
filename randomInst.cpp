@@ -25,6 +25,7 @@ VOID printip(void *ip){
 VOID CountInst(INS ins, VOID *v)
 {
     allinst++;
+    cout << INS_Disassemble(ins) << endl;
     if (randInst.Value() == allinst){
         INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)printip, IARG_INST_PTR, IARG_END);
     }
