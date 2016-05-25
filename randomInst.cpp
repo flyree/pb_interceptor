@@ -23,7 +23,9 @@ VOID CountInst(INS ins, VOID *v)
 {
     allinst++;
     if (randInst.Value() == allinst)
-        cout << INS_Address(ins) << endl;
+        //cout << INS_Address(ins) << endl;
+        cout << randInst.Value() << endl;
+        cout << "HERE" << endl;
 }
 
 // bool mayChangeControlFlow(INS ins){
