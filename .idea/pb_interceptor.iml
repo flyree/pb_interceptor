@@ -13,6 +13,7 @@
       <sourceFolder url="file://$MODULE_DIR$/utils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instcategory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/fi_cjmp_map.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/randomInst.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/faultinjection.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instselector.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/utils.cpp" isTestSource="false" />
@@ -191,8 +192,8 @@
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/Headers" />
-          <root url="file:///Library/Developer/CommandLineTools/usr/lib/clang/7.0.2/include" />
           <root url="file:///Library/Developer/CommandLineTools/usr/include" />
+          <root url="file:///Library/Developer/CommandLineTools/usr/lib/clang/7.3.0/include" />
           <root url="file:///Library/Frameworks/iTunesLibrary.framework/Headers" />
           <root url="file:///Library/Frameworks/R.framework/Headers" />
           <root url="file:///Library/Frameworks/R.framework/PrivateHeaders" />
@@ -370,8 +371,8 @@
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/Headers" />
-          <root url="file:///Library/Developer/CommandLineTools/usr/lib/clang/7.0.2/include" />
           <root url="file:///Library/Developer/CommandLineTools/usr/include" />
+          <root url="file:///Library/Developer/CommandLineTools/usr/lib/clang/7.3.0/include" />
           <root url="file:///Library/Frameworks/iTunesLibrary.framework/Headers" />
           <root url="file:///Library/Frameworks/R.framework/Headers" />
           <root url="file:///Library/Frameworks/R.framework/PrivateHeaders" />
