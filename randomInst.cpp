@@ -18,12 +18,15 @@ KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
 static UINT64 allinst = 0;
 
 
+VOID printip(void *ip){
+    cout << ip << end;
+}
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
 {
     allinst++;
     if (randInst.Value() == allinst){
-        cout << INS_Address(ins) << endl;
+        INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)printip, IARG_INST_PTR, IARG_END);
     }
 }
 
