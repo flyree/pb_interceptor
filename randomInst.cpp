@@ -15,7 +15,6 @@
 KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
                       "randinst", 0, "Total number of instructions");
 
-static UINT64 randinst = 0;
 static UINT64 allinst = 0;
 
 
@@ -23,7 +22,7 @@ static UINT64 allinst = 0;
 VOID CountInst(INS ins, VOID *v)
 {
     allinst++;
-    if (randinst == allinst)
+    if (randInst.Value() == allinst)
         cout << INS_Address(ins) << endl;
 }
 
