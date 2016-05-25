@@ -37,7 +37,7 @@ endif
 
 
  
-TOOL_ROOTS = instcount faultinjection instcategory
+TOOL_ROOTS = instcount faultinjection instcategory randomInst
 
 
 TOOLS = $(TOOL_ROOTS:%=$(OBJDIR)%$(PINTOOL_SUFFIX))
