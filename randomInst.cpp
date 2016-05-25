@@ -22,10 +22,9 @@ static UINT64 allinst = 0;
 VOID CountInst(INS ins, VOID *v)
 {
     allinst++;
-    if (randInst.Value() == allinst)
-        //cout << INS_Address(ins) << endl;
-        cout << randInst.Value() << endl;
-        cout << "HERE" << endl;
+    if (randInst.Value() == allinst){
+        cout << INS_Address(ins) << endl;
+    }
 }
 
 // bool mayChangeControlFlow(INS ins){
