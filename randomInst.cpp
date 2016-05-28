@@ -13,13 +13,19 @@
 #include "utils.h"
 
 KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
-                      "randinst","0", "Total number of instructions");
+                      "randinst","0", "random instructions");
+
+KNOB<string> pcfile(KNOB_MODE_WRITEONCE, "pintool",
+                    "pcfile","pcfile", "file name that stores ");
 
 static UINT64 allinst = 0;
 
 
 VOID printip(void *ip){
-    cout << ip << endl;
+    ofstream OutFile;
+    OutFile.open(pcfile.Value().c_str());
+    OutFile << ip << endl;
+    OutFile.close();
 }
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
