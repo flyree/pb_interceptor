@@ -14,6 +14,7 @@
       <sourceFolder url="file://$MODULE_DIR$/instcategory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/fi_cjmp_map.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/randomInst.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/determineInst.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/faultinjection.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instselector.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/utils.cpp" isTestSource="false" />

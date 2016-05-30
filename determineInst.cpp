@@ -1,5 +1,5 @@
 //
-// Created by Bo Fang on 2016-05-18.
+// Created by Bo Fang on 2016-05-27.
 //
 
 #include<iostream>
@@ -12,60 +12,29 @@
 #include "pin.H"
 #include "utils.h"
 
-KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
-                      "randinst","0", "random instructions");
 
-KNOB<string> pcfile(KNOB_MODE_WRITEONCE, "pintool",
-                    "pcfile","pcfile", "file name that stores ");
+KNOB<string> pc(KNOB_MODE_WRITEONCE, "pintool",
+                    "pc","pc", "file name that stores the pc for injection");
 
-static UINT64 allinst = 0;
+KNOB<UINT64> randint(KNOB_MODE_WRITEONCE, "pintool",
+                     "randomInt","0", "random instruction");
+
+static UINT64 iterations = 0;
+
+static UINT64 randominst = 0;
+
 
 
 VOID printip(void *ip){
-    ofstream OutFile;
-    OutFile.open(pcfile.Value().c_str());
-    OutFile << ip << endl;
-    OutFile.close();
+    if (ip == pc.Value())
+        interations ++;
 }
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
 {
-    allinst++;
-    if (randInst.Value() == allinst){
-        cout << INS_Disassemble(ins) << endl;
+    randominst++;
+    if (randominst!= randint.Value())
         INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)printip, IARG_INST_PTR, IARG_END);
-        int numW = INS_MaxNumWRegs(ins), randW = 0;
-        UINT32 index = 0;
-        REG reg;
-        if(numW > 1)
-            randW = random() % numW;
-        else
-            randW = 0;
-        reg = INS_RegW(ins, randW);
-
-        if(numW > 1 && (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS))
-            randW = (randW + 1) % numW;
-        if(numW > 1 && REG_valid(INS_RegW(ins, randW)))
-            reg = INS_RegW(ins, randW);
-        else
-            reg = INS_RegW(ins, 0);
-        if(!REG_valid(reg)) {
-
-            cout <<"REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
-            return;
-        }
-        if (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS){
-            cout <<"REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
-            return;
-        }
-        if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
-            REG reg = INS_MemoryBaseReg(ins);
-            if (!REG_valid(reg)) {
-                reg = INS_MemoryIndexReg(ins);
-            }
-        }
-        cout <<"reg:" + REG_StringShort(reg) << endl;
-    }
 }
 
 // bool mayChangeControlFlow(INS ins){
@@ -87,6 +56,7 @@ VOID Fini(INT32 code, VOID *v)
     //OutFile.open(instcount_file.Value().c_str());
     //OutFile.setf(ios::showbase);
     //OutFile.close();
+    cout << iterations << endl;
 }
 
 /* ===================================================================== */
