@@ -26,7 +26,7 @@ static UINT64 randominst = 0;
 
 
 VOID printip(void *ip){
-    if (ip == pc.Value())
+    if (static_cast<std::string*>(ip) == pc.Value())
         interations ++;
 }
 // Pin calls this function every time a new instruction is encountered
