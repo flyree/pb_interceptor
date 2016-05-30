@@ -11,6 +11,7 @@
 
 #include "pin.H"
 #include "utils.h"
+#include <stdlib.h>
 
 
 KNOB<string> pc(KNOB_MODE_WRITEONCE, "pintool",
