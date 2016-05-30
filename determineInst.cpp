@@ -25,16 +25,19 @@ static UINT64 randominst = 0;
 
 
 
-VOID printip(void *ip){
-    if (static_cast<std::string*>(ip) == pc.Value())
-        interations ++;
-}
+//VOID printip(void *ip){
+//    if (static_cast<std::string>(ip) == pc.Value())
+ //       interations ++;
+//}
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
 {
     randominst++;
-    if (randominst!= randint.Value())
-        INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)printip, IARG_INST_PTR, IARG_END);
+    if (randominst!= randint.Value()){
+        if (atoi(pc.Value().c_str())==INS_Address(ins)){
+            iterations++;
+        }
+    }
 }
 
 // bool mayChangeControlFlow(INS ins){
