@@ -11,7 +11,7 @@
 
 #include "pin.H"
 #include "utils.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
                       "randinst","0", "random instructions");
