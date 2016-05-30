@@ -7,11 +7,13 @@
 
 #include <set>
 #include <map>
-#include <string>
+//#include <string>
 
 #include "pin.H"
 #include "utils.h"
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
                       "randinst","0", "random instructions");
