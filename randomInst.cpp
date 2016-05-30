@@ -40,10 +40,10 @@ VOID CountInst(INS ins, VOID *v)
         REG reg;
         if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
             REG reg = INS_MemoryBaseReg(ins);
-            cout <<"reg0:" + REG_StringShort(reg) << endl;
+            cout <<"reg:" + REG_StringShort(reg) << endl;
             if (!REG_valid(reg)) {
                 reg = INS_MemoryIndexReg(ins);
-                cout <<"reg1:" + REG_StringShort(reg) << endl;
+                cout <<"reg:" + REG_StringShort(reg) << endl;
             }
 
         }
@@ -70,9 +70,8 @@ VOID CountInst(INS ins, VOID *v)
                 cout << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
                 return;
             }
-            cout <<"reg3:" + REG_StringShort(reg) << endl;
+            cout <<"reg:" + REG_StringShort(reg) << endl;
         }
-        cout <<"reg:" + REG_StringShort(reg) << endl;
     }
 }
 
