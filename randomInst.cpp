@@ -11,6 +11,7 @@
 
 #include "pin.H"
 #include "utils.h"
+#include <stdio.h>
 
 KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
                       "randinst","0", "random instructions");
@@ -38,7 +39,7 @@ VOID CountInst(INS ins, VOID *v)
         UINT32 index = 0;
         REG reg;
         if(numW > 1)
-            randW = random() % numW;
+            randW = rand() % numW;
         else
             randW = 0;
         reg = INS_RegW(ins, randW);
