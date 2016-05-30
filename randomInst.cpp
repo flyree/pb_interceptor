@@ -37,34 +37,35 @@ VOID CountInst(INS ins, VOID *v)
     if (randInst.Value() == allinst){
         cout << INS_Disassemble(ins) << endl;
         INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)printip, IARG_INST_PTR, IARG_END);
-        int numW = INS_MaxNumWRegs(ins), randW = 0;
-        UINT32 index = 0;
         REG reg;
-        if(numW > 1)
-            randW = rand() % numW;
-        else
-            randW = 0;
-        reg = INS_RegW(ins, randW);
-
-        if(numW > 1 && (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS))
-            randW = (randW + 1) % numW;
-        if(numW > 1 && REG_valid(INS_RegW(ins, randW)))
-            reg = INS_RegW(ins, randW);
-        else
-            reg = INS_RegW(ins, 0);
-        if(!REG_valid(reg)) {
-
-            cout <<"REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
-            return;
-        }
-        if (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS){
-            cout <<"REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
-            return;
-        }
         if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
             REG reg = INS_MemoryBaseReg(ins);
             if (!REG_valid(reg)) {
                 reg = INS_MemoryIndexReg(ins);
+            }
+        }
+        else {
+            int numW = INS_MaxNumWRegs(ins), randW = 0;
+            if (numW > 1)
+                randW = rand() % numW;
+            else
+                randW = 0;
+            reg = INS_RegW(ins, randW);
+
+            if (numW > 1 && (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS))
+                randW = (randW + 1) % numW;
+            if (numW > 1 && REG_valid(INS_RegW(ins, randW)))
+                reg = INS_RegW(ins, randW);
+            else
+                reg = INS_RegW(ins, 0);
+            if (!REG_valid(reg)) {
+
+                cout << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
+                return;
+            }
+            if (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS) {
+                cout << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
+                return;
             }
         }
         cout <<"reg:" + REG_StringShort(reg) << endl;
