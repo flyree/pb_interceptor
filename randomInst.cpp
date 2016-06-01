@@ -72,6 +72,7 @@ VOID CountInst(INS ins, VOID *v)
             }
             cout <<"reg:" + REG_StringShort(reg) << endl;
         }
+        cout<<"pc:"<<INS_Address(ins) << endl;
     }
 }
 
