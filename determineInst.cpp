@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include<fstream>
+#include <sstream>
 
 #include <set>
 #include <map>
@@ -35,8 +36,10 @@ VOID CountInst(INS ins, VOID *v)
 {
     randominst++;
     if (randominst <= randint.Value()){
+        stringstream ss;
+        ss << INS_Address(ins);
         cout << (UINT64)atoi(pc.Value().c_str()) << ":" << INS_Address(ins) << endl;
-        if (pc.Value() == std::to_string((INS_Address(ins)))){
+        if (pc.Value() == ss.str()){
             iterations++;
             cout << iterations << endl;
         }
