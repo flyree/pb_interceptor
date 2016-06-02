@@ -74,6 +74,7 @@ VOID CountInst(INS ins, VOID *v)
         }
         cout<<"pc:"<<INS_Address(ins) << endl;
     }
+    cout<<"pc:"<<INS_Address(ins) << endl;
 }
 
 // bool mayChangeControlFlow(INS ins){
