@@ -35,10 +35,9 @@ static UINT64 randominst = 0;
 VOID CountInst(INS ins, VOID *v)
 {
     randominst++;
-    if (randominst <= randint.Value()){
+    if (randominst < randint.Value()){
         stringstream ss;
         ss << INS_Address(ins);
-        cout << (UINT64)atoi(pc.Value().c_str()) << ":" << INS_Address(ins) << endl;
         if (pc.Value() == ss.str()){
             iterations++;
             cout << iterations << endl;
@@ -62,7 +61,7 @@ VOID Fini(INT32 code, VOID *v)
 {
     // Write to a file since cout and cerr maybe closed by the application
     ofstream OutFile;
-    OutFile.open("test");
+    OutFile.open("iteration");
     OutFile.setf(ios::showbase);
     OutFile << iterations << endl;
     OutFile.close();
