@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="755aca87-7e0a-42a8-9659-9d473c12c884" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/determineInst.cpp" afterPath="$PROJECT_DIR$/determineInst.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/randomInst.cpp" afterPath="$PROJECT_DIR$/randomInst.cpp" />
     </list>
     <ignored path="pb_interceptor.iws" />
@@ -123,8 +122,8 @@
       <file leaf-file-name="randomInst.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/randomInst.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8968872">
-              <caret line="76" column="6" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.6498054">
+              <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
               <folding>
                 <element signature="e#44#62#0" expanded="true" />
               </folding>
@@ -730,8 +729,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/randomInst.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8968872">
-          <caret line="76" column="6" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.6498054">
+          <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
           <folding>
             <element signature="e#44#62#0" expanded="true" />
           </folding>

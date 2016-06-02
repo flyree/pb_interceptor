@@ -35,15 +35,16 @@ VOID CountInst(INS ins, VOID *v)
 {
     allinst++;
     if (randInst.Value() == allinst){
-        cout << INS_Disassemble(ins) << endl;
+        ofstream OutFile;
+        OutFile.open("instruction");
         INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)printip, IARG_INST_PTR, IARG_END);
         REG reg;
         if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
             REG reg = INS_MemoryBaseReg(ins);
-            cout <<"mem:" + REG_StringShort(reg) << endl;
+            OutFile <<"mem:" + REG_StringShort(reg) << endl;
             if (!REG_valid(reg)) {
                 reg = INS_MemoryIndexReg(ins);
-                cout <<"mem:" + REG_StringShort(reg) << endl;
+                OutFile <<"mem:" + REG_StringShort(reg) << endl;
             }
 
         }
@@ -63,16 +64,17 @@ VOID CountInst(INS ins, VOID *v)
                 reg = INS_RegW(ins, 0);
             if (!REG_valid(reg)) {
 
-                cout << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
+                OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
                 return;
             }
             if (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS) {
-                cout << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
+                OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
                 return;
             }
-            cout <<"reg:" + REG_StringShort(reg) << endl;
+            OutFile <<"reg:" + REG_StringShort(reg) << endl;
         }
-        cout<<"pc:"<<INS_Address(ins) << endl;
+        OutFile<<"pc:"<<INS_Address(ins) << endl;
+        OutFile.close()
     }
     //cout<<"pc:"<<INS_Address(ins) << " " << allinst<< endl;
 }
