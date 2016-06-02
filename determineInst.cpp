@@ -36,7 +36,7 @@ VOID CountInst(INS ins, VOID *v)
     randominst++;
     if (randominst <= randint.Value()){
         cout << (UINT64)atoi(pc.Value().c_str()) << ":" << INS_Address(ins) << endl;
-        if (pc.Value().c_str() == itoa((INS_Address(ins)))){
+        if (pc.Value() == std::to_string((INS_Address(ins)))){
             iterations++;
             cout << iterations << endl;
         }
