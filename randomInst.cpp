@@ -74,6 +74,8 @@ VOID CountInst(INS ins, VOID *v)
             OutFile <<"reg:" + REG_StringShort(reg) << endl;
         }
         OutFile<<"pc:"<<INS_Address(ins) << endl;
+        if (INS_Valid(INS_Next(ins)))
+            OutFile<<"next:"<<INS_Address(INS_Next(ins)) << endl;
         OutFile.close();
     }
     //cout<<"pc:"<<INS_Address(ins) << " " << allinst<< endl;
