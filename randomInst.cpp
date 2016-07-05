@@ -34,6 +34,7 @@ VOID printip(void *ip){
 VOID CountInst(INS ins, VOID *v)
 {
     allinst++;
+    cout << "Current is" << allinst << endl;
     if (randInst.Value() == allinst){
         ofstream OutFile;
         OutFile.open("instruction");
