@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/libload.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/memtrack.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instcount.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/findnextinst.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/memtrack.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instselector.h" isTestSource="false" />
