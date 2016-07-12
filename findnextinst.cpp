@@ -38,8 +38,8 @@ VOID CountInst(INS ins, VOID *v)
         int numW = INS_MaxNumWRegs(ins);
         for(int i = 0; i < numW; ++i){
             REG write_reg = INS_RegW(ins,i);
-            if (REG_Valid(write_reg))
-                OutFIle << "regw"<< i <<":"<< REG_StringShort(write_reg) << endl;
+            if (REG_valid(write_reg))
+                OutFile << "regw"<< i <<":"<< REG_StringShort(write_reg) << endl;
         }
         OutFile.close();
     }
@@ -61,11 +61,11 @@ VOID CountInst(INS ins, VOID *v)
 VOID Fini(INT32 code, VOID *v)
 {
     // Write to a file since cout and cerr maybe closed by the application
-    ofstream OutFile;
-    OutFile.open("iteration");
-    OutFile.setf(ios::showbase);
-    OutFile << iterations << endl;
-    OutFile.close();
+    //ofstream OutFile;
+    //OutFile.open("iteration");
+    //OutFile.setf(ios::showbase);
+    //OutFile << iterations << endl;
+    //OutFile.close();
     //cout << iterations << endl;
 }
 
