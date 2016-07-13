@@ -52,7 +52,8 @@ VOID CountInst(INS ins, VOID *v)
         const char * reg_name = NULL;
         if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
             REG reg = INS_MemoryBaseReg(ins);
-            reg_name = new string(REG_StringShort(reg)).c_str();
+            string *temp = new string(REG_StringShort(reg));
+            reg_name = temp->c_str();
 
             if (!REG_valid(reg)) {
                 reg = INS_MemoryIndexReg(ins);

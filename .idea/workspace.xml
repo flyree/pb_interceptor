@@ -88,7 +88,7 @@
       <file leaf-file-name="faultinjection.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-111.111115">
+            <state vertical-scroll-proportion="-82.22222">
               <caret line="498" column="46" selection-start-line="498" selection-start-column="34" selection-end-line="498" selection-end-column="46" />
               <folding>
                 <element signature="e#11692#13116#0" expanded="true" />
@@ -123,8 +123,8 @@
       <file leaf-file-name="randomInst.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/randomInst.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34375">
-              <caret line="74" column="43" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.484375">
+              <caret line="54" column="60" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
               <folding>
                 <element signature="e#44#62#0" expanded="true" />
               </folding>
@@ -743,9 +743,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/determineInst.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="70" selection-start-line="33" selection-start-column="70" selection-end-line="33" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/faultinjection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-111.111115">
+        <state vertical-scroll-proportion="-82.22222">
           <caret line="498" column="46" selection-start-line="498" selection-start-column="34" selection-end-line="498" selection-end-column="46" />
           <folding>
             <element signature="e#11692#13116#0" expanded="true" />
@@ -756,18 +764,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/determineInst.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="70" selection-start-line="33" selection-start-column="70" selection-end-line="33" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/randomInst.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34375">
-          <caret line="74" column="43" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.484375">
+          <caret line="54" column="60" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
           <folding>
             <element signature="e#44#62#0" expanded="true" />
           </folding>
