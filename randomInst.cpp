@@ -79,12 +79,14 @@ VOID CountInst(INS ins, VOID *v)
                 reg = INS_RegW(ins, 0);
             if (!REG_valid(reg)) {
 
-                reg_name = "REGNOTVALID: inst " + INS_Disassemble(ins);
+                string *temp = new string( "REGNOTVALID: inst " + INS_Disassemble(ins));
+                reg_name = temp->c_str();
                 //OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
                 mflag = -1;
             }
             if (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS) {
-                reg_name = "REGNOTVALID: inst " + INS_Disassemble(ins);
+                string *temp = new string( "REGNOTVALID: inst " + INS_Disassemble(ins));
+                reg_name = temp->c_str();
                 mflag = -1;
                 //OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
             }
