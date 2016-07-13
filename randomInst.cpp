@@ -74,7 +74,7 @@ VOID CountInst(INS ins, VOID *v)
 {
     //allinst++;
     //cout << "Current is" << allinst << endl;
-    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_END);
+    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_INST_PTR,IARG_END);
     //cout<<"pc:"<<INS_Address(ins) << " " << allinst<< endl;
 }
 
