@@ -30,11 +30,14 @@ VOID printip(void *ip){
     OutFile << ip << endl;
     OutFile.close();
 }
+
+VOID docount() {allinst++;}
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
 {
-    allinst++;
-    cout << "Current is" << allinst << endl;
+    //allinst++;
+    //cout << "Current is" << allinst << endl;
+    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_END);
     if (randInst.Value() == allinst){
         ofstream OutFile;
         OutFile.open("instruction");
