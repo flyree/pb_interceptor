@@ -57,7 +57,8 @@ VOID CountInst(INS ins, VOID *v)
 
             if (!REG_valid(reg)) {
                 reg = INS_MemoryIndexReg(ins);
-                reg_name = new string(REG_StringShort(reg)).c_str();
+                string *temp = new string(REG_StringShort(reg));
+                reg_name = temp->c_str();
                 //OutFile <<"mem:" + REG_StringShort(reg) << endl;
             }
             mflag = 1;
@@ -87,7 +88,8 @@ VOID CountInst(INS ins, VOID *v)
                 mflag = -1;
                 //OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
             }
-            reg_name = new string(REG_StringShort(reg)).c_str();
+            string *temp = new string(REG_StringShort(reg));
+            reg_name = temp->c_str();
             //OutFile << "reg:" + REG_StringShort(reg) << endl;
         }
         //if (INS_Valid(INS_Next(ins)))
