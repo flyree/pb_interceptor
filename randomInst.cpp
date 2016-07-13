@@ -21,21 +21,45 @@ KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
 static UINT64 allinst = 0;
 
 
-VOID docount(VOID *ip) {
+VOID docount(VOID *ip, VOID *reg_name,UINT32 mflag) {
     allinst++;
-    INS ins = (INS)*ip;
     if (randInst.Value() == allinst){
         ofstream OutFile;
         OutFile.open("instruction");
+        if (mflag == 1){
+            OutFile << "mem:"<<(const char *)reg_name << endl;
+        }
+        if (mflag == 0){
+            OutFile << "reg:"<<(const char*)reg_name << endl;
+        }
+        if (mflag == -1){
+            OutFile << (const char*)reg_name << endl;
+        }
+        OutFile << "pc:"<<(unsigned long)ip << endl;
+        OutFile.close();
+    }
+}
+// Pin calls this function every time a new instruction is encountered
+VOID CountInst(INS ins, VOID *v)
+{
+    //allinst++;
+    //cout << "Current is" << allinst << endl;
+
+
+
+        int mflag = 0;
         REG reg;
+        const char * reg_name = NULL;
         if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
             REG reg = INS_MemoryBaseReg(ins);
-            OutFile <<"mem:" + REG_StringShort(reg) << endl;
+            reg_name = new string(REG_StringShort(reg)).c_str();
+
             if (!REG_valid(reg)) {
                 reg = INS_MemoryIndexReg(ins);
-                OutFile <<"mem:" + REG_StringShort(reg) << endl;
+                reg_name = new string(REG_StringShort(reg)).c_str();
+                //OutFile <<"mem:" + REG_StringShort(reg) << endl;
             }
-
+            mflag = 1;
         }
         else {
             int numW = INS_MaxNumWRegs(ins), randW = 0;
@@ -53,28 +77,22 @@ VOID docount(VOID *ip) {
                 reg = INS_RegW(ins, 0);
             if (!REG_valid(reg)) {
 
-                OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
-                return;
+                reg_name = "REGNOTVALID: inst " + INS_Disassemble(ins);
+                //OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
+                mflag = -1;
             }
             if (reg == REG_RFLAGS || reg == REG_FLAGS || reg == REG_EFLAGS) {
-                OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
-                return;
+                reg_name = "REGNOTVALID: inst " + INS_Disassemble(ins);
+                mflag = -1;
+                //OutFile << "REGNOTVALID: inst " + INS_Disassemble(ins) << endl;
             }
-            OutFile <<"reg:" + REG_StringShort(reg) << endl;
+            reg_name = new string(REG_StringShort(reg)).c_str();
+            //OutFile << "reg:" + REG_StringShort(reg) << endl;
         }
-        OutFile<<"pc:"<<INS_Address(ins) << endl;
         //if (INS_Valid(INS_Next(ins)))
         //    OutFile<<"next:"<<INS_Address(INS_Next(ins)) << endl;
-        OutFile.close();
-    }
-
-}
-// Pin calls this function every time a new instruction is encountered
-VOID CountInst(INS ins, VOID *v)
-{
-    //allinst++;
-    //cout << "Current is" << allinst << endl;
-    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_INST_PTR,IARG_END);
+        //OutFile.close();
+        INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_INST_PTR,IARG_PTR,reg_name,IARG_UINT32,mflag,IARG_END);
     //cout<<"pc:"<<INS_Address(ins) << " " << allinst<< endl;
 }
 
