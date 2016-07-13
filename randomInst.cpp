@@ -18,18 +18,8 @@
 KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
                       "randinst","0", "random instructions");
 
-KNOB<string> pcfile(KNOB_MODE_WRITEONCE, "pintool",
-                    "pcfile","pcfile", "file name that stores ");
-
 static UINT64 allinst = 0;
 
-
-VOID printip(void *ip){
-    ofstream OutFile;
-    OutFile.open(pcfile.Value().c_str());
-    OutFile << ip << endl;
-    OutFile.close();
-}
 
 VOID docount() {allinst++;}
 // Pin calls this function every time a new instruction is encountered
@@ -41,7 +31,6 @@ VOID CountInst(INS ins, VOID *v)
     if (randInst.Value() == allinst){
         ofstream OutFile;
         OutFile.open("instruction");
-        INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)printip, IARG_INST_PTR, IARG_END);
         REG reg;
         if (INS_IsMemoryWrite(ins) || INS_IsMemoryRead(ins)) {
             REG reg = INS_MemoryBaseReg(ins);
