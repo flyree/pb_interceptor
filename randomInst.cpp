@@ -21,13 +21,9 @@ KNOB<UINT64> randInst(KNOB_MODE_WRITEONCE, "pintool",
 static UINT64 allinst = 0;
 
 
-VOID docount() {allinst++;}
-// Pin calls this function every time a new instruction is encountered
-VOID CountInst(INS ins, VOID *v)
-{
-    //allinst++;
-    //cout << "Current is" << allinst << endl;
-    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_END);
+VOID docount(VOID *ip) {
+    allinst++;
+    INS ins = (INS)*ip;
     if (randInst.Value() == allinst){
         ofstream OutFile;
         OutFile.open("instruction");
@@ -71,6 +67,14 @@ VOID CountInst(INS ins, VOID *v)
         //    OutFile<<"next:"<<INS_Address(INS_Next(ins)) << endl;
         OutFile.close();
     }
+
+}
+// Pin calls this function every time a new instruction is encountered
+VOID CountInst(INS ins, VOID *v)
+{
+    //allinst++;
+    //cout << "Current is" << allinst << endl;
+    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_END);
     //cout<<"pc:"<<INS_Address(ins) << " " << allinst<< endl;
 }
 
