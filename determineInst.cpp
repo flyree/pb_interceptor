@@ -25,6 +25,16 @@ static UINT64 iterations = 0;
 
 static UINT64 randominst = 0;
 
+VOID countIteration(VOID *ip){
+    randominst++;
+    if (randominst < randint.Value()){
+        stringstream ss;
+        ss << (unsigned long)ip;
+        if (pc.Value() == ss.str()){
+            iterations++;
+        }
+    }
+}
 
 
 //VOID printip(void *ip){
@@ -34,15 +44,7 @@ static UINT64 randominst = 0;
 // Pin calls this function every time a new instruction is encountered
 VOID CountInst(INS ins, VOID *v)
 {
-    randominst++;
-    if (randominst < randint.Value()){
-        stringstream ss;
-        ss << INS_Address(ins);
-        if (pc.Value() == ss.str()){
-            iterations++;
-            cout << iterations << endl;
-        }
-    }
+    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)countIteration,IARG_INST_PTR,IARG_END);
 }
 
 // bool mayChangeControlFlow(INS ins){
