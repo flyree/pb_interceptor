@@ -34,7 +34,7 @@ VOID CountInst(INS ins, VOID *v)
     if (pc.Value() == ss.str()){
         ofstream OutFile;
         OutFile.open("nextpc");
-        OutFile << "nextpc:"<<INS_Address(ins) << endl;
+        OutFile << "nextpc:"<< INS_NextAddress(ins) << endl;
         int numW = INS_MaxNumWRegs(ins);
         for(int i = 0; i < numW; ++i){
             REG write_reg = INS_RegW(ins,i);
