@@ -19,7 +19,7 @@ KNOB<string> pc(KNOB_MODE_WRITEONCE, "pintool",
                     "pc","pc", "file name that stores the pc for injection");
 
 KNOB<UINT64> randint(KNOB_MODE_WRITEONCE, "pintool",
-                     "randomInt","0", "random instruction");
+                     "randinst","0", "random instruction");
 
 static UINT64 iterations = 0;
 
