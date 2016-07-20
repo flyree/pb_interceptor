@@ -26,12 +26,12 @@ static UINT64 iterations = 0;
 static UINT64 randominst = 0;
 
 VOID countIteration(VOID *ip){
-    randominst++;
     if (randominst < randint.Value()){
         iterations++;
     }
 }
 
+VOID docount(){randominst++;}
 
 //VOID printip(void *ip){
 //    if (static_cast<std::string>(ip) == pc.Value())
@@ -46,6 +46,7 @@ VOID CountInst(INS ins, VOID *v)
         INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)countIteration,IARG_INST_PTR,IARG_END);
     }
 
+    INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)docount,IARG_END);
 }
 
 // bool mayChangeControlFlow(INS ins){
