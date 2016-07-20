@@ -43,6 +43,7 @@ VOID CountInst(INS ins, VOID *v)
     stringstream ss;
     ss << INS_Address(ins);
     if (pc.Value() == ss.str()){
+        cout << pc.Value() << " " << ss.str() << endl;
         INS_InsertCall(ins,IPOINT_BEFORE,(AFUNPTR)countIteration,IARG_INST_PTR,IARG_END);
     }
 
