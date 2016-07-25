@@ -31,7 +31,7 @@ VOID Routine(RTN rtn, VOID *v)
     for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
     {
         // Insert a call to docount to increment the instruction counter for this rtn
-        if (INS_isStackRead(ins) || INS_isStackWrite(ins)){
+        if (INS_IsStackRead(ins) || INS_IsStackWrite(ins)){
             string *temp = new string(RTN_Name(rtn));
             const char *rtn_name = temp->c_str();
             INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)dostack, IARG_CONTEXT,IARG_PTR,rtn_name, IARG_END);
