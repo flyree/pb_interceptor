@@ -15,6 +15,6 @@ set(SOURCE_FILES
     memtrack.h
     utils.cpp
     utils.h 
-    libload.cpp libload.h randomInst.cpp determineInst.cpp findnextinst.cpp)
+    libload.cpp libload.h randomInst.cpp determineInst.cpp findnextinst.cpp getStackInfo.cpp getStackInfo.h)
 
 add_executable(pb_interceptor ${SOURCE_FILES})

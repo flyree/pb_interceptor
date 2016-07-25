@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/findnextinst.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/memtrack.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instcount.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/getStackInfo.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/memtrack.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instselector.h" isTestSource="false" />
@@ -17,6 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/randomInst.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/determineInst.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/faultinjection.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/getStackInfo.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/instselector.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/utils.cpp" isTestSource="false" />
     </content>
