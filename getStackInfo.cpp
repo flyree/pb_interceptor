@@ -17,7 +17,7 @@
 
 VOID dostack(CONTEXT *ctxt, VOID *rtn_name){
     ofstream OutFile;
-    OutFile.open("stackinfo");
+    OutFile.open("stackinfo",std::fstream::app);
     ADDRINT rbp = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
     OutFile << (const char*) rtn_name<<":"<< rbp << endl;
     OutFile.close();
