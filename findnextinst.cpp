@@ -41,6 +41,10 @@ VOID CountInst(INS ins, VOID *v)
             if (REG_valid(write_reg))
                 OutFile << "regw"<< i <<":"<< REG_StringShort(write_reg) << endl;
         }
+        if (INS_IsStackRead(ins) || INS_IsStackWrite(ins)){
+            if (REG_valid(INS_MemoryBaseReg(ins)))
+                OutFile << "stack:"<<REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+        }
         OutFile.close();
     }
 
