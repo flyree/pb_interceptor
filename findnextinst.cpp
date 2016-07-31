@@ -42,12 +42,20 @@ VOID CountInst(INS ins, VOID *v)
                 OutFile << "regw"<< i <<":"<< REG_StringShort(write_reg) << endl;
         }
         if (INS_IsStackRead(ins)){
-            if (REG_valid(INS_MemoryBaseReg(ins)))
-                OutFile << "stackr:"<<REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+            if (REG_valid(INS_MemoryBaseReg(ins))) {
+                if (INS_MemoryOperandIsRead(ins, 0))
+                    OutFile << "stackr:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+                if (INS_MemoryOperandIsWritten(ins, 0))
+                    OutFile << "stackw:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+            }
         }
         else if (INS_IsStackWrite(ins)){
-            if (REG_valid(INS_MemoryBaseReg(ins)))
-                OutFile << "stackw:"<<REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+            if (REG_valid(INS_MemoryBaseReg(ins))) {
+                if (INS_MemoryOperandIsRead(ins, 0))
+                    OutFile << "stackr:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+                if (INS_MemoryOperandIsWritten(ins, 0))
+                    OutFile << "stackw:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+            }
         }
         else{
             OutFile << "nostack" << endl;
