@@ -47,7 +47,17 @@ VOID CountInst(INS ins, VOID *v)
                     OutFile << "stackr:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
                 if (INS_MemoryOperandIsWritten(ins, 0))
                     OutFile << "stackw:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+                // write base, index, scale and displacement
+                OutFile << "base:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+                if(REG_valid(INS_MemoryIndexReg(ins)))
+                    OutFile << "index:" << REG_StringShort(INS_MemoryIndexReg(ins)) << endl;
+                else
+                    OutFile << "index:" << "null" << endl;
+                OutFile << "displacement:"<<INS_MemoryDisplacememnt(ins) << endl;
+                OutFile << "scale:"<<INS_MemoryScale(ins) << endl;
+
             }
+
         }
         else if (INS_IsStackWrite(ins)){
             if (REG_valid(INS_MemoryBaseReg(ins))) {
@@ -55,6 +65,13 @@ VOID CountInst(INS ins, VOID *v)
                     OutFile << "stackr:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
                 if (INS_MemoryOperandIsWritten(ins, 0))
                     OutFile << "stackw:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+                OutFile << "base:" << REG_StringShort(INS_MemoryBaseReg(ins)) << endl;
+                if(REG_valid(INS_MemoryIndexReg(ins)))
+                    OutFile << "index:" << REG_StringShort(INS_MemoryIndexReg(ins)) << endl;
+                else
+                    OutFile << "index:" << "null" << endl;
+                OutFile << "displacement:"<<INS_MemoryDisplacememnt(ins) << endl;
+                OutFile << "scale:"<<INS_MemoryScale(ins) << endl;
             }
         }
         else{
