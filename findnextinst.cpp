@@ -53,7 +53,7 @@ VOID CountInst(INS ins, VOID *v)
                     OutFile << "index:" << REG_StringShort(INS_MemoryIndexReg(ins)) << endl;
                 else
                     OutFile << "index:" << "null" << endl;
-                OutFile << "displacement:"<<INS_MemoryDisplacememnt(ins) << endl;
+                OutFile << "displacement:"<<INS_MemoryDisplacement(ins) << endl;
                 OutFile << "scale:"<<INS_MemoryScale(ins) << endl;
 
             }
@@ -70,7 +70,7 @@ VOID CountInst(INS ins, VOID *v)
                     OutFile << "index:" << REG_StringShort(INS_MemoryIndexReg(ins)) << endl;
                 else
                     OutFile << "index:" << "null" << endl;
-                OutFile << "displacement:"<<INS_MemoryDisplacememnt(ins) << endl;
+                OutFile << "displacement:"<<INS_MemoryDisplacement(ins) << endl;
                 OutFile << "scale:"<<INS_MemoryScale(ins) << endl;
             }
         }
