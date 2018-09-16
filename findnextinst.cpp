@@ -78,6 +78,32 @@ VOID CountInst(INS ins, VOID *v)
             OutFile << "nostack" << endl;
         }
         OutFile.close();
+        ofstream spsize;
+        spsize.open("spsize");
+        RTN rtn = INS_Rtn(ins);
+        if (RTN_Valid(rtn))
+        {
+            RTN_Open(rtn);
+            for( INS ins1= RTN_InsHead(rtn); INS_Valid(ins1); ins1 = INS_Next(ins1) )
+            {
+
+                    if (OPCODE_StringShort(INS_Opcode(ins1)) == "SUB")
+                    {
+                        int numW = INS_MaxNumWRegs(ins1);
+                        for (int i = 0; i < numW; i++)
+                        {
+                            REG reg = INS_RegW(ins1, i);
+                            if (REG_StringShort(reg) == "rsp")
+                            {
+                                spsize << INS_Disassemble(ins1) ;
+                            }
+                        }
+                        break;
+                    }
+            }
+            spsize.close();
+            RTN_Close(rtn);
+        }
     }
 
 }
